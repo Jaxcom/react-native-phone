@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "react-native-phone",
-    "description": "A very interesting project.",
+    "description": "A simple phone for Bandwidth",
     "slug": "react-native-phone",
     "privacy": "public",
     "sdkVersion": "29.0.0",
@@ -21,7 +21,7 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": false
     }
   }
 }
