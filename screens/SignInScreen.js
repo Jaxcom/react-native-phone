@@ -2,6 +2,8 @@ import React from 'react';
 import {
     Button,
     View,
+    StyleSheet,
+    AsyncStorage,
 } from 'react-native';
 
 export default class SignInScreen extends React.Component {
@@ -23,4 +25,9 @@ export default class SignInScreen extends React.Component {
     };
 }
   
- 
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: '#fff',
+    },
+});
