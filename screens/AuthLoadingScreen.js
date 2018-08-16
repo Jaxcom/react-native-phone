@@ -4,8 +4,8 @@ import {
   AsyncStorage,
   StatusBar,
   View,
-  StyleSheet,
 } from 'react-native';
+import styles from '../constants/Styles';
 
 export default class AuthLoadingScreen extends React.Component {
   constructor(props) {
@@ -27,10 +27,3 @@ export default class AuthLoadingScreen extends React.Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
-    },
-});

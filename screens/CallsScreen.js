@@ -1,10 +1,10 @@
 import React from 'react';
 import {
   ScrollView,
-  StyleSheet,
   View,
 } from 'react-native';
-import {Endpoint} from 'react-native-pjsip'
+import {Endpoint} from 'react-native-pjsip';
+import styles from '../constants/Styles';
 
 const endpoint = new Endpoint();
 
@@ -18,10 +18,3 @@ export default class HomeScreen extends React.Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-  },
-});

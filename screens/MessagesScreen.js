@@ -1,9 +1,10 @@
 import React from 'react';
 import {
   ScrollView,
-  StyleSheet,
   View,
 } from 'react-native';
+
+import styles from '../constants/Styles';
 
 export default class HomeScreen extends React.Component {
   render() {
@@ -15,10 +16,3 @@ export default class HomeScreen extends React.Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-  },
-});

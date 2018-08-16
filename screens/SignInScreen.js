@@ -2,9 +2,9 @@ import React from 'react';
 import {
     Button,
     View,
-    StyleSheet,
     AsyncStorage,
 } from 'react-native';
+import styles from '../constants/Styles';
 
 export default class SignInScreen extends React.Component {
     static navigationOptions = {
@@ -24,10 +24,3 @@ export default class SignInScreen extends React.Component {
         this.props.navigation.navigate('App');
     };
 }
-  
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
-    },
-});
