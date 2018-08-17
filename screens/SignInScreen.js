@@ -1,10 +1,14 @@
 import React from 'react';
 import {SecureStore} from 'expo';
+import validate from 'validate.js'
+
 import {
     Button,
     View,
     AsyncStorage,
 } from 'react-native';
+
+import TextField from '../components/TextField';
 import styles from '../constants/Styles';
 
 export default class SignInScreen extends React.Component {
@@ -15,31 +19,39 @@ export default class SignInScreen extends React.Component {
     render() {
         return (
         <View style={styles.container}>
-            <TextInput
+            <TextField
                 autoFocus={true}
                 placeholder="User ID"
                 onChangeText={text => this.setState({userId: text})}
+                error={this.state.errors.userId}
             />
-            <TextInput
+            <TextField
                 placeholder="Api Token"
                 onChangeText={text => this.setState({apiToken: text})}
+                error={this.state.errors.apiToken}
             />
-            <TextInput
+            <TextField
                 placeholder="Api Secret"
                 onChangeText={text => this.setState({apiSecret: text})}
+                error={this.state.errors.apiSecret}
             />
-            <TextInput
-                placeholder="Phone Number"
+            <TextField
+                placeholder="SIP Domain ID"
+                onChangeText={text => this.setState({domainId: text})}
+                error={this.state.errors.domainId}
+                hint="Leave empty to create new SIP domain automatically."
+            />
+            <TextField
+                placeholder="Phone Number (like +11234567890)"
                 keyboardType="phone-pad"
                 onChangeText={text => this.setState({phoneNumber: text})}
+                error={this.state.errors.phoneNumber}
+                hint="Leave empty if you would like to allocate new number."
             />
-            <TextInput
-                placeholder="SIP Domain ID"
-                onChangeText={text => this.setState({sipUserDomainId: text})}
-            />
-            <TextInput
+            <TextField
                 placeholder="Backend Server URL"
                 onChangeText={text => this.setState({baseUrl: text})}
+                error={this.state.errors.baseUrl}
             />
             <Button title="Sign in" onPress={this._signInAsync} disabled={this.state.inProgress} />
             <ActivityIndicator animating={this.state.inProgress}/>
@@ -47,9 +59,46 @@ export default class SignInScreen extends React.Component {
         );
     }
 
+    _validate = async () => {
+        const result = await validate.async(this.state, {
+            userId: {
+                presence: true
+            },
+            apiToken: {
+                presence: true
+            },
+            apiSecret: {
+                presence: true
+            },
+            domainId: {
+                presence: true
+            },
+            phoneNumber: {
+                length: {
+                    is: 6,
+                }
+            },
+            baseUrl: {
+                presence: true
+            },
+        })
+        const errors = {}
+        let hasErrors = false
+        Object.keys(result || {}).forEach(key => {
+            errors[key] = result[key].join(', ')
+            hasErrors = true
+        })
+        this.setState({errors});
+        return hasErrors;
+    }
+
     _signInAsync = async () => {
         this.setState({inProgress: true, error: null})
         try {
+            const hasErrors = await this._validate();
+            if (hasErrors) {
+                return;
+            }
             let baseUrl = this.state.baseUrl;
             if (baseUrl.endsWith('/')) {
                 baseUrl = baseUrl.substr(0, baseUrl.length - 1)
