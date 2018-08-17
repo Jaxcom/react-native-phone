@@ -5483,6 +5483,22 @@ tar@^4:
     safe-buffer "^5.1.2"
     yallist "^3.0.2"
 
+tcomb-form-native@^0.6.15:
+  version "0.6.15"
+  resolved "https://registry.yarnpkg.com/tcomb-form-native/-/tcomb-form-native-0.6.15.tgz#c8751c6f3951e499108e205867a25f2e6cb9b934"
+  dependencies:
+    tcomb-validation "^3.0.0"
+
+tcomb-validation@^3.0.0:
+  version "3.4.1"
+  resolved "https://registry.yarnpkg.com/tcomb-validation/-/tcomb-validation-3.4.1.tgz#a7696ec176ce56a081d9e019f8b732a5a8894b65"
+  dependencies:
+    tcomb "^3.0.0"
+
+tcomb@^3.0.0:
+  version "3.2.27"
+  resolved "https://registry.yarnpkg.com/tcomb/-/tcomb-3.2.27.tgz#f4928bfc536b959d21a47e5f5f1ca2b2e4b7188a"
+
 temp@0.8.3:
   version "0.8.3"
   resolved "https://registry.yarnpkg.com/temp/-/temp-0.8.3.tgz#e0c6bc4d26b903124410e4fed81103014dfc1f59"
@@ -5693,10 +5709,6 @@ validate-npm-package-license@^3.0.1:
   dependencies:
     spdx-correct "^3.0.0"
     spdx-expression-parse "^3.0.0"
-
-validate.js@^0.12.0:
-  version "0.12.0"
-  resolved "https://registry.yarnpkg.com/validate.js/-/validate.js-0.12.0.tgz#17f989e37c192ea2f826bbf19bf4e97e6e4be68f"
 
 vary@~1.1.2:
   version "1.1.2"
