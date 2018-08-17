@@ -12,12 +12,17 @@ import {
 
 const Form = t.form.Form;
 
+const PhoneNumber = t.refinement(t.String, v => {
+    const l = (v || '').length;
+    return (l === 0) || ((l === 12) && v.startWith('+'));
+} )
+
 const SignIn = t.struct({
     userId: t.String,
     apiToken: t.String,
     apiSecret: t.String,
     domainId: t.maybe(t.String),
-    phoneNumber: t.maybe(t.String),
+    phoneNumber: t.maybe(PhoneNumber),
     baseUrl: t.String,
 });
 
@@ -28,19 +33,15 @@ const options = {
         },
         domainId: {
             label: 'Domain ID (optional)',
-            help: 'Leave empty if you would like to create new SIP domain'
+            placeholder: 'Leave empty to create new SIP domain'
         },
         phoneNumber: {
-            help: 'Leave empty if you would like to reserve new phone number'
+            placeholder: '+11234567890. Leave empty to reserve a number'
         },
         baseUrl: {
             label: 'Base url to backend server'
         }
     }
-};
-
-const defaultValues = {
-    baseUrl: 'https://some-server',
 };
 
 export default class SignInScreen extends React.Component {
@@ -49,7 +50,10 @@ export default class SignInScreen extends React.Component {
     };
 
     state = {
-        inProgress: false
+        inProgress: false,
+        values: {
+            baseUrl: 'https://some-server',
+        }
     }
 
     render() {
@@ -59,7 +63,8 @@ export default class SignInScreen extends React.Component {
                 ref="form"
                 type={SignIn}
                 options={options}
-                value={defaultValues}
+                value={this.state.values}
+                onChange={this._formValuesChanged}
             />
             <Button title="Log in" onPress={this._logInAsync} disabled={this.state.inProgress} />
             <ActivityIndicator animating={this.state.inProgress}/>
@@ -103,6 +108,8 @@ export default class SignInScreen extends React.Component {
             this.setState({inProgress: false});
         }
     };
+
+    _formValuesChanged = values => this.setState({values});
 }
 
 const styles = StyleSheet.create({
