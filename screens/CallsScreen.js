@@ -84,6 +84,14 @@ const callsStyles = StyleSheet.create({
     width: "100%"
   },
   callButton: {
-    alignSelf: 'stretch' 
+    alignSelf: 'stretch',
+    borderWidth:1,
+    borderColor:'rgba(0,0,0,0.2)',
+    alignItems:'center',
+    justifyContent:'center',
+    width:100,
+    height:100,
+    backgroundColor:'#fff',
+    borderRadius:100,
   }
 });
