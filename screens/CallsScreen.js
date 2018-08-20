@@ -5,8 +5,11 @@ import {
   StyleSheet,
   Button,
   Text,
+  TouchableOpacity,
+  Platform,
 } from 'react-native';
 import {Endpoint} from 'react-native-pjsip';
+import { Ionicons } from '@expo/vector-icons';
 import styles from '../constants/Styles';
 
 const endpoint = new Endpoint();
@@ -56,7 +59,13 @@ export default class HomeScreen extends React.Component {
             <Button title="#" style={callsStyles.button} onPress={this.pressButton('#')}/>
           </View>
           <View style={callsStyles.dialer}>
-            <Button title="Call" style={callsStyles.callButton} onPress={this.makeCall}/>
+            <TouchableOpacity onPress={this.makeCall} style={callsStyles.callButton}>
+              <Ionicons name={
+        Platform.OS === 'ios'
+          ? `ios-call${focused ? '' : '-outline'}`
+          : 'md-call'
+      } size={32} color="green" />
+            </TouchableOpacity>
           </View>
         </ScrollView>
       </View>
