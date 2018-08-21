@@ -11,6 +11,8 @@ import {
 import {Endpoint} from 'react-native-pjsip';
 import { Ionicons } from '@expo/vector-icons';
 import styles from '../constants/Styles';
+import DialButton from '../components/DialButton';
+import { height } from 'window-size';
 
 const endpoint = new Endpoint();
 
@@ -36,36 +38,36 @@ export default class HomeScreen extends React.Component {
       <View style={styles.container}>
         <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
           <View style={callsStyles.dialer}>
-            <Text>{this.state.phoneNumber}</Text>
+            <Text style={callsStyles.phoneNumber}>{this.state.phoneNumber}</Text>
           </View>
           <View style={callsStyles.dialer}>
-            <Button title="1" style={callsStyles.button} onPress={this.pressButton('1')}/>
-            <Button title="2" style={callsStyles.button} onPress={this.pressButton('2')}/>
-            <Button title="3" style={callsStyles.button} onPress={this.pressButton('3')}/>
+            <DialButton title="1" onPress={this.pressButton('1')}/>
+            <DialButton title="2" onPress={this.pressButton('2')}/>
+            <DialButton title="3" onPress={this.pressButton('3')}/>
           </View>
           <View style={callsStyles.dialer}>
-            <Button title="4" style={callsStyles.button} onPress={this.pressButton('4')}/>
-            <Button title="5" style={callsStyles.button} onPress={this.pressButton('5')}/>
-            <Button title="6" style={callsStyles.button} onPress={this.pressButton('6')}/>
+            <DialButton title="4" onPress={this.pressButton('4')}/>
+            <DialButton title="5" onPress={this.pressButton('5')}/>
+            <DialButton title="6" onPress={this.pressButton('6')}/>
           </View>
           <View style={callsStyles.dialer}>
-            <Button title="7" style={callsStyles.button} onPress={this.pressButton('7')}/>
-            <Button title="8" style={callsStyles.button} onPress={this.pressButton('8')}/>
-            <Button title="9" style={callsStyles.button} onPress={this.pressButton('9')}/>
+            <DialButton title="7" onPress={this.pressButton('7')}/>
+            <DialButton title="8" onPress={this.pressButton('8')}/>
+            <DialButton title="9" onPress={this.pressButton('9')}/>
           </View>
           <View style={callsStyles.dialer}>
-            <Button title="*" style={callsStyles.button} onPress={this.pressButton('*')}/>
-            <Button title="0" style={callsStyles.button} onPress={this.pressButton('0')}/>
-            <Button title="#" style={callsStyles.button} onPress={this.pressButton('#')}/>
+            <DialButton title="*" onPress={this.pressButton('*')}/>
+            <DialButton title="0" onPress={this.pressButton('0')}/>
+            <DialButton title="#" onPress={this.pressButton('#')}/>
           </View>
           <View style={callsStyles.dialer}>
-            <TouchableOpacity onPress={this.makeCall} style={callsStyles.callButton}>
+            <DialButton onPress={this.makeCall}>
               <Ionicons name={
         Platform.OS === 'ios'
           ? `ios-call${focused ? '' : '-outline'}`
           : 'md-call'
       } size={32} color="green" />
-            </TouchableOpacity>
+            </DialButton>
           </View>
         </ScrollView>
       </View>
@@ -78,20 +80,14 @@ const callsStyles = StyleSheet.create({
     flex: 1, 
     flexDirection:'row', 
     justifyContent:'center',
-    alignItems:'center'
+    alignItems:'center',
   },
   button: {
     width: "100%"
   },
-  callButton: {
-    alignSelf: 'stretch',
-    borderWidth:1,
-    borderColor:'rgba(0,0,0,0.2)',
-    alignItems:'center',
-    justifyContent:'center',
-    width:100,
-    height:100,
-    backgroundColor:'#fff',
-    borderRadius:100,
+  phoneNumber: {
+    fontSize: 20,
+    height: 32,
+    width: '100%'
   }
 });
