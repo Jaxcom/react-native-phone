@@ -12,7 +12,8 @@ import { withNavigation } from 'react-navigation';
 import {Endpoint} from 'react-native-pjsip';
 import { Ionicons } from '@expo/vector-icons';
 import styles from '../constants/Styles';
-import DialButton from '../components/DialButton';
+import Dialpad from '../components/Dialpad';
+import CallButton from '../components/CallButton';
 
 const endpoint = new Endpoint();
 
@@ -26,15 +27,13 @@ class CallsScreen extends React.Component {
   }
 
   pressButton(digit){
-    return () => {
-      let {phoneNumber} = this.state;
-      if (!phoneNumber || phoneNumber === '+') {
-        phoneNumber = `+1${digit}`;
-      } else {
-        phoneNumber = `${phoneNumber}${digit}`;
-      }
-      this.setState({phoneNumber});
+    let {phoneNumber} = this.state;
+    if (!phoneNumber || phoneNumber === '+') {
+      phoneNumber = `+1${digit}`;
+    } else {
+      phoneNumber = `${phoneNumber}${digit}`;
     }
+    this.setState({phoneNumber});
   }
 
   pressBackspace() {
@@ -68,34 +67,9 @@ class CallsScreen extends React.Component {
           : 'md-backspace'
       } style={callsStyles.backspace} size={32} onPress={this.pressBackspace.bind(this)} onLongPress={this.pressClear.bind(this)}/></TouchableOpacity> : null}
           </View>
+          <Dialpad pressButton={this.pressButton.bind(this)} />
           <View style={callsStyles.dialer}>
-            <DialButton title="1" onPress={this.pressButton('1')}/>
-            <DialButton title="2" onPress={this.pressButton('2')}/>
-            <DialButton title="3" onPress={this.pressButton('3')}/>
-          </View>
-          <View style={callsStyles.dialer}>
-            <DialButton title="4" onPress={this.pressButton('4')}/>
-            <DialButton title="5" onPress={this.pressButton('5')}/>
-            <DialButton title="6" onPress={this.pressButton('6')}/>
-          </View>
-          <View style={callsStyles.dialer}>
-            <DialButton title="7" onPress={this.pressButton('7')}/>
-            <DialButton title="8" onPress={this.pressButton('8')}/>
-            <DialButton title="9" onPress={this.pressButton('9')}/>
-          </View>
-          <View style={callsStyles.dialer}>
-            <DialButton title="*" onPress={this.pressButton('*')}/>
-            <DialButton title="0" onPress={this.pressButton('0')}/>
-            <DialButton title="#" onPress={this.pressButton('#')}/>
-          </View>
-          <View style={callsStyles.dialer}>
-            <DialButton onPress={this.makeCall.bind(this)}>
-              <Ionicons name={
-        Platform.OS === 'ios'
-          ? `ios-call${focused ? '' : '-outline'}`
-          : 'md-call'
-      } size={32} color="green" />
-            </DialButton>
+            <CallButton onPress={this.makeCall.bind(this)} />
           </View>
         </ScrollView>
       </View>

@@ -2,13 +2,11 @@ import React from 'react';
 import {
   View,
   Text,
-  Platform,
   StyleSheet,
 } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
-import { withNavigation } from 'react-navigation';
+import {withNavigation} from 'react-navigation';
 
-import DialButton from '../components/DialButton';
+import CallButton from '../components/CallButton';
 import styles from '../constants/Styles';
 
 
@@ -28,13 +26,7 @@ class ActiveCallScreen extends React.Component {
             <View style={activeCallStyles.phoneNumberContainer}><Text style={activeCallStyles.phoneNumber}>{phoneNumber}</Text></View>
             <View style={activeCallStyles.statusContainer}><Text style={activeCallStyles.status}>{this.state.status}</Text></View>
             <View style={{position: 'absolute', left: 0, right: 0, bottom: 0, justifyContent:'center', alignItems:'center', flex: 1, flexDirection:'row'}}>
-            <DialButton onPress={this.hangup.bind(this)}>
-              <Ionicons name={
-        Platform.OS === 'ios'
-          ? `ios-call${focused ? '' : '-outline'}`
-          : 'md-call'
-      } size={32} color="red" />
-            </DialButton>
+            <CallButton onPress={this.hangup.bind(this)} />>
             </View>
       </View>)
     }

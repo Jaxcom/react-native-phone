@@ -15,7 +15,7 @@ export default class AuthLoadingScreen extends React.Component {
 
   _bootstrapAsync = async () => {
     const userId = 'userId'; //await AsyncStorage.getItem('userId');
-    this.props.navigation.navigate(userId ? 'IncomingCall' : 'Auth', {phoneNumber: '+1234567890'});
+    this.props.navigation.navigate(userId ? 'App' : 'Auth');
   };
 
   render() {
