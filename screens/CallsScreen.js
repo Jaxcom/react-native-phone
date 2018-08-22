@@ -3,7 +3,6 @@ import {
   ScrollView,
   View,
   StyleSheet,
-  Button,
   Text,
   TouchableOpacity,
   Platform,
@@ -21,15 +20,37 @@ export default class HomeScreen extends React.Component {
   };
   
   state = {
-    phoneNumber: ''
+    phoneNumber: '+1'
   }
 
   pressButton(digit){
-    return () => this.setState({phoneNumber: `${this.state.phoneNumber}${digit}`})
+    return () => {
+      let {phoneNumber} = this.state;
+      if (!phoneNumber || phoneNumber === '+') {
+        phoneNumber = `+1${digit}`;
+      } else {
+        phoneNumber = `${phoneNumber}${digit}`;
+      }
+      this.setState({phoneNumber});
+    }
+  }
+
+  pressBackspace() {
+    let {phoneNumber} = this.state;
+    if (phoneNumber && phoneNumber.length > 0 && phoneNumber !== '+1'){
+      phoneNumber = phoneNumber.slice(0, phoneNumber.length - 1);
+      this.setState({phoneNumber});
+    }
+  }
+
+  pressClear() {
+    this.setState({phoneNumber: '+1'});
   }
 
   makeCall() {
-
+    const {phoneNumber} = this.state;
+    console.log(`Calling to ${phoneNumber}`);
+    //TODO make a call
   }
 
   render() {
@@ -38,6 +59,11 @@ export default class HomeScreen extends React.Component {
         <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
           <View style={callsStyles.dialer}>
             <Text style={callsStyles.phoneNumber}>{this.state.phoneNumber}</Text>
+            {this.state.phoneNumber.length > 2 ? <TouchableOpacity><Ionicons name={
+        Platform.OS === 'ios'
+          ? `ios-backspace${focused ? '' : '-outline'}`
+          : 'md-backspace'
+      } style={callsStyles.backspace} size={32} onPress={this.pressBackspace.bind(this)} onLongPress={this.pressClear.bind(this)}/></TouchableOpacity> : null}
           </View>
           <View style={callsStyles.dialer}>
             <DialButton title="1" onPress={this.pressButton('1')}/>
@@ -85,8 +111,11 @@ const callsStyles = StyleSheet.create({
     width: "100%"
   },
   phoneNumber: {
-    fontSize: 20,
-    height: 32,
-    width: '100%'
+    fontSize: 30,
+    height: 40,
+    justifyContent:'center',
+  },
+  backspace: {
+    paddingLeft: 20
   }
 });
