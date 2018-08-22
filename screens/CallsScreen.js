@@ -7,6 +7,8 @@ import {
   TouchableOpacity,
   Platform,
 } from 'react-native';
+import { withNavigation } from 'react-navigation';
+
 import {Endpoint} from 'react-native-pjsip';
 import { Ionicons } from '@expo/vector-icons';
 import styles from '../constants/Styles';
@@ -14,7 +16,7 @@ import DialButton from '../components/DialButton';
 
 const endpoint = new Endpoint();
 
-export default class HomeScreen extends React.Component {
+class CallsScreen extends React.Component {
   static navigationOptions = {
     title: 'Calls',
   };
@@ -51,6 +53,7 @@ export default class HomeScreen extends React.Component {
     const {phoneNumber} = this.state;
     console.log(`Calling to ${phoneNumber}`);
     //TODO make a call
+    this.props.navigation.navigate('ActiveCall', {phoneNumber});
   }
 
   render() {
@@ -86,7 +89,7 @@ export default class HomeScreen extends React.Component {
             <DialButton title="#" onPress={this.pressButton('#')}/>
           </View>
           <View style={callsStyles.dialer}>
-            <DialButton onPress={this.makeCall}>
+            <DialButton onPress={this.makeCall.bind(this)}>
               <Ionicons name={
         Platform.OS === 'ios'
           ? `ios-call${focused ? '' : '-outline'}`
@@ -119,3 +122,5 @@ const callsStyles = StyleSheet.create({
     paddingLeft: 20
   }
 });
+
+export default withNavigation(CallsScreen);
