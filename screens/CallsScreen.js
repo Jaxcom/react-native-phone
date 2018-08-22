@@ -12,7 +12,6 @@ import {Endpoint} from 'react-native-pjsip';
 import { Ionicons } from '@expo/vector-icons';
 import styles from '../constants/Styles';
 import DialButton from '../components/DialButton';
-import { height } from 'window-size';
 
 const endpoint = new Endpoint();
 
