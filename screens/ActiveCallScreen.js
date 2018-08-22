@@ -7,6 +7,7 @@ import {
 import {withNavigation} from 'react-navigation';
 
 import CallButton from '../components/CallButton';
+import Dialpad from '../components/Dialpad';
 import styles from '../constants/Styles';
 
 
@@ -15,6 +16,10 @@ class ActiveCallScreen extends React.Component {
         status: 'Dialing'
     }
     
+    pressButton () {
+        //TODO send dtmf
+    }
+
     hangup () {
         //TODO hangup active call
         this.props.navigation.navigate('App');
@@ -24,7 +29,8 @@ class ActiveCallScreen extends React.Component {
         const phoneNumber = this.props.navigation.getParam('phoneNumber', 'Unknown number');
         return (<View style={styles.container}>
             <View style={activeCallStyles.phoneNumberContainer}><Text style={activeCallStyles.phoneNumber}>{phoneNumber}</Text></View>
-            <View style={activeCallStyles.statusContainer}><Text style={activeCallStyles.status}>{this.state.status}</Text></View>
+            {this.state.status === 'active' ? <View style={activeCallStyles.statusContainer}><Text style={activeCallStyles.status}>{this.state.status}</Text></View> :
+            <Dialpad pressButton={this.pressButton.bind(this)}/>}
             <View style={{position: 'absolute', left: 0, right: 0, bottom: 0, justifyContent:'center', alignItems:'center', flex: 1, flexDirection:'row'}}>
             <CallButton onPress={this.hangup.bind(this)} />>
             </View>
