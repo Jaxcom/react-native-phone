@@ -7,7 +7,7 @@ import DialButton from '../components/DialButton';
 export default class Dialpad extends React.Component {
   pressButton(digit) {
       return () => {
-          //this.props.pressButton(digit);
+          this.props.pressButton(digit);
       }
   }
   

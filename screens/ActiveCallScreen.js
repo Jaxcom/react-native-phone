@@ -29,10 +29,10 @@ class ActiveCallScreen extends React.Component {
         const phoneNumber = this.props.navigation.getParam('phoneNumber', 'Unknown number');
         return (<View style={styles.container}>
             <View style={activeCallStyles.phoneNumberContainer}><Text style={activeCallStyles.phoneNumber}>{phoneNumber}</Text></View>
-            {this.state.status === 'active' ? <View style={activeCallStyles.statusContainer}><Text style={activeCallStyles.status}>{this.state.status}</Text></View> :
-            <Dialpad pressButton={this.pressButton.bind(this)}/>}
+            {this.state.status !== 'Active' ? <View style={activeCallStyles.statusContainer}><Text style={activeCallStyles.status}>{this.state.status} ...</Text></View> :
+            <View style={activeCallStyles.dialerContainer}><Dialpad pressButton={this.pressButton.bind(this)}/></View>}
             <View style={{position: 'absolute', left: 0, right: 0, bottom: 0, justifyContent:'center', alignItems:'center', flex: 1, flexDirection:'row'}}>
-            <CallButton onPress={this.hangup.bind(this)} />>
+            <CallButton onPress={this.hangup.bind(this)} color="red" />
             </View>
       </View>)
     }
@@ -50,6 +50,12 @@ const activeCallStyles = StyleSheet.create({
         flexDirection:'row', 
         justifyContent:'center',
         top: 30
+    },
+    dialerContainer: {
+        flex: 1, 
+        flexDirection:'row', 
+        justifyContent:'center',
+        top: -110
     },
     phoneNumber: {
         fontSize: 30,
