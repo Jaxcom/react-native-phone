@@ -9,6 +9,7 @@ import {withNavigation} from 'react-navigation';
 import CallButton from '../components/CallButton';
 import Dialpad from '../components/Dialpad';
 import styles from '../constants/Styles';
+import {getSipData} from '../lib/sip';
 
 
 class ActiveCallScreen extends React.Component {

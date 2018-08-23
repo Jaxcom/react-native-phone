@@ -8,18 +8,21 @@ import { withNavigation } from 'react-navigation';
 
 import CallButton from '../components/CallButton';
 import styles from '../constants/Styles';
+import {getSipData} from '../lib/sip';
 
 
 class IncomingCallScreen extends React.Component {
     
-    answer () {
+    async answer () {
         const phoneNumber = this.props.navigation.getParam('phoneNumber', '');
-        //TODO answer incoming call
+        const {endpoint, activeCall} = await getSipData();
+        await endpoint.answerCall(activeCall);
         this.props.navigation.navigate('ActiveCall', {phoneNumber});
     }
     
-    cancel () {
-        //TODO cancel incoming call
+    async cancel () {
+        const {endpoint, activeCall} = await getSipData();
+        await endpoint.declineCall(activeCall);
         this.props.navigation.navigate('App');
     }
     
