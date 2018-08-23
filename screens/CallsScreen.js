@@ -12,6 +12,7 @@ import {Ionicons} from '@expo/vector-icons';
 import styles from '../constants/Styles';
 import Dialpad from '../components/Dialpad';
 import CallButton from '../components/CallButton';
+import {getSipData} from '../lib/sip';
 
 class CallsScreen extends React.Component {
   static navigationOptions = {
@@ -44,10 +45,11 @@ class CallsScreen extends React.Component {
     this.setState({phoneNumber: '+1'});
   }
 
-  makeCall() {
+  async makeCall() {
     const {phoneNumber} = this.state;
     console.log(`Calling to ${phoneNumber}`);
-    //TODO make a call
+    const data = await getSipData();
+    data.activeCall = await data.endpoint.makeCall(data.accounts[0], phoneNumber);
     this.props.navigation.navigate('ActiveCall', {phoneNumber});
   }
 

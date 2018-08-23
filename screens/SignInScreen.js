@@ -10,7 +10,7 @@ import {
     StyleSheet
 } from 'react-native';
 
-import {getSipData} from './lib/sip';
+import {getSipData} from '../lib/sip';
 
 const Form = t.form.Form;
 
