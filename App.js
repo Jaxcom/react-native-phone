@@ -2,6 +2,7 @@ import React from 'react';
 import { Platform, StatusBar, StyleSheet, View } from 'react-native';
 import { AppLoading,  Font, Icon } from 'expo';
 import AppNavigator from './navigation/AppNavigator';
+import {getSipData} from './lib/sip';
 
 export default class App extends React.Component {
   state = {
@@ -36,6 +37,7 @@ export default class App extends React.Component {
         // to remove this if you are not using it in your app
         'space-mono': require('./assets/fonts/SpaceMono-Regular.ttf'),
       }),
+      getSipData(),
     ]);
   };
 

@@ -7,15 +7,11 @@ import {
   TouchableOpacity,
   Platform,
 } from 'react-native';
-import { withNavigation } from 'react-navigation';
-
-import {Endpoint} from 'react-native-pjsip';
-import { Ionicons } from '@expo/vector-icons';
+import {withNavigation} from 'react-navigation';
+import {Ionicons} from '@expo/vector-icons';
 import styles from '../constants/Styles';
 import Dialpad from '../components/Dialpad';
 import CallButton from '../components/CallButton';
-
-const endpoint = new Endpoint();
 
 class CallsScreen extends React.Component {
   static navigationOptions = {

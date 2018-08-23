@@ -10,6 +10,8 @@ import {
     StyleSheet
 } from 'react-native';
 
+import {getSipData} from './lib/sip';
+
 const Form = t.form.Form;
 
 const PhoneNumber = t.refinement(t.String, v => {
@@ -97,6 +99,7 @@ export default class SignInScreen extends React.Component {
                 await AsyncStorage.setItem('userId', data.userId);
                 await AsyncStorage.setItem('phoneNumber', phoneNumber);
                 await AsyncStorage.setItem('baseUrl', baseUrl);
+                await getSipData();
             } else {
                 const {error} = await response.json();
                 throw new Error(error || 'Unknown error from backend server');
