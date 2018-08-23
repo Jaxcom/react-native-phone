@@ -16,22 +16,21 @@ class ActiveCallScreen extends React.Component {
     state = {
         status: 'Dialing'
     }
+
+    callChanged = null
+
+    componentWillUnmount () {
+        endpoint.removeListener("call_changed", this.callChanged);
+    }
+
     componentDidMount () {
         getSipData().then(({endpoint, activeCall}) => {
-            const callChanged = call => {
+            this.callChanged = call => {
                 if (activeCall.getId() === call.getId()) {
                     this.setState({status: activeCall.getStateText()});
                 }
             };
-            const callTerminated = call => {
-                if (activeCall.getId() === call.getId()) {
-                    endpoint.removeListener("call_changed", callChanged);
-                    endpoint.removeListener("call_terminated", callTerminated);
-                    this.props.navigation.navigate('App');
-                }
-            };
-            endpoint.addListener("call_changed", callChanged);
-            endpoint.prependListener("call_terminated", callTerminated);
+            endpoint.addListener("call_changed", this.callChanged);
         });
     }
     

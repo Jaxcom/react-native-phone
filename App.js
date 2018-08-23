@@ -3,6 +3,7 @@ import { Platform, StatusBar, StyleSheet, View } from 'react-native';
 import { AppLoading,  Font, Icon } from 'expo';
 import AppNavigator from './navigation/AppNavigator';
 import {getSipData} from './lib/sip';
+import {setNavigator} from './lib/navigation';
 
 export default class App extends React.Component {
   state = {
@@ -22,7 +23,7 @@ export default class App extends React.Component {
       return (
         <View style={styles.container}>
           {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
-          <AppNavigator />
+          <AppNavigator ref={navigatorRef => setNavigator(navigatorRef)}/>
         </View>
       );
     }
