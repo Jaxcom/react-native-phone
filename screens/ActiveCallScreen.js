@@ -14,17 +14,20 @@ import {getSipData} from '../lib/sip';
 
 class ActiveCallScreen extends React.Component {
     state = {
-        status: 'Dialing'
+        status: 'Dialing',
+        endpoint: null,
+        activeCall: null
     }
 
     callChanged = null
 
     componentWillUnmount () {
-        endpoint.removeListener("call_changed", this.callChanged);
+        this.state.endpoint.removeListener("call_changed", this.callChanged);
     }
 
     componentDidMount () {
         getSipData().then(({endpoint, activeCall}) => {
+            this.setState({endpoint, activeCall});
             this.callChanged = call => {
                 if (activeCall.getId() === call.getId()) {
                     this.setState({status: activeCall.getStateText()});
@@ -34,14 +37,16 @@ class ActiveCallScreen extends React.Component {
         });
     }
     
-    async pressButton (digit) {
-        const {endpoint, activeCall} = await getSipData();
-        await endpoint.dtmfCall(activeCall, digit);
+    pressButton (digit) {
+        const {endpoint, activeCall} = this.state;
+        endpoint.dtmfCall(activeCall, digit).catch(console.error);
     }
 
-    async hangup () {
-        const {endpoint, activeCall} = await getSipData();
-        await endpoint.hangupCall(activeCall);
+    hangup () {
+        const {endpoint, activeCall} = this.state;
+        endpoint.hangupCall(activeCall).catch(() => {
+            this.props.navigation.navigate('App');
+        }, console.error);
     }
     
     render () {
