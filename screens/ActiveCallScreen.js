@@ -42,11 +42,13 @@ class ActiveCallScreen extends React.Component {
         endpoint.dtmfCall(activeCall, digit).catch(console.error);
     }
 
-    hangup () {
+    async hangup () {
         const {endpoint, activeCall} = this.state;
-        endpoint.hangupCall(activeCall).catch(() => {
+        try {
+            await endpoint.hangupCall(activeCall);
+        } finally {
             this.props.navigation.navigate('App');
-        }, console.error);
+        }
     }
     
     render () {
