@@ -5,7 +5,10 @@
     "slug": "react-native-phone",
     "privacy": "public",
     "sdkVersion": "29.0.0",
-    "platforms": ["ios", "android"],
+    "platforms": [
+      "ios",
+      "android"
+    ],
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -22,6 +25,16 @@
     ],
     "ios": {
       "supportsTablet": false
+    },
+    "isDetached": true,
+    "detach": {
+      "androidExpoViewUrl": "https://s3.amazonaws.com/exp-exponent-view-code/android-v2.7.2-sdk29.0.0-54e8f46d-36a6-460f-b0f9-e1043f28b215.tar.gz"
+    },
+    "scheme": "exp51eb280a3d164c8a955bd6acde52b069",
+    "android": {
+      "package": "com.bandwidth.reactNativePhone",
+      "publishBundlePath": "android/app/src/main/assets/shell-app.bundle",
+      "publishManifestPath": "android/app/src/main/assets/shell-app-manifest.json"
     }
   }
 }
