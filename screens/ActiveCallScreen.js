@@ -25,9 +25,14 @@ class ActiveCallScreen extends React.Component {
         this.state.endpoint.removeListener("call_changed", this.callChanged);
     }
 
-    componentDidMount () {
+    componentWillMount() {
+        this.init();
+    }
+
+    init () {
         getSipData().then(({endpoint, activeCall}) => {
             this.setState({endpoint, activeCall});
+            this.setState({status: activeCall.getStateText()});
             this.callChanged = call => {
                 if (activeCall.getId() === call.getId()) {
                     this.setState({status: activeCall.getStateText()});
@@ -55,7 +60,7 @@ class ActiveCallScreen extends React.Component {
         const phoneNumber = this.props.navigation.getParam('phoneNumber', 'Unknown number');
         return (<View style={styles.container}>
             <View style={activeCallStyles.phoneNumberContainer}><Text style={activeCallStyles.phoneNumber}>{phoneNumber}</Text></View>
-            {this.state.status !== 'Active' ? <View style={activeCallStyles.statusContainer}><Text style={activeCallStyles.status}>{this.state.status} ...</Text></View> :
+            {this.state.status !== 'CONFIRMED' ? <View style={activeCallStyles.statusContainer}><Text style={activeCallStyles.status}>{this.state.status} ...</Text></View> :
             <View style={activeCallStyles.dialerContainer}><Dialpad pressButton={this.pressButton.bind(this)}/></View>}
             <View style={{position: 'absolute', left: 0, right: 0, bottom: 0, justifyContent:'center', alignItems:'center', flex: 1, flexDirection:'row'}}>
             <CallButton onPress={this.hangup.bind(this)} color="red" />
