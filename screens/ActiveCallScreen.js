@@ -31,8 +31,7 @@ class ActiveCallScreen extends React.Component {
 
     init () {
         getSipData().then(({endpoint, activeCall}) => {
-            this.setState({endpoint, activeCall});
-            this.setState({status: activeCall.getStateText()});
+            this.setState({endpoint, activeCall, status: activeCall.getStateText()});
             this.callChanged = call => {
                 if (activeCall.getId() === call.getId()) {
                     this.setState({status: activeCall.getStateText()});
