@@ -16,7 +16,7 @@ class IncomingCallScreen extends React.Component {
     async answer () {
         const phoneNumber = this.props.navigation.getParam('phoneNumber', '');
         const {endpoint, activeCall} = await getSipData();
-        await endpoint.answerCall(activeCall, {vid_cnt: 0}); // audio only
+        await endpoint.answerCall(activeCall, {videoCount: 0, audioCount: 1}); // audio only
         this.props.navigation.navigate('ActiveCall', {phoneNumber});
     }
     
