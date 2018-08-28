@@ -34,7 +34,7 @@ class ActiveCallScreen extends React.Component {
             this.setState({endpoint, activeCall, status: activeCall.getStateText()});
             this.callChanged = call => {
                 if (activeCall.getId() === call.getId()) {
-                    this.setState({status: activeCall.getStateText()});
+                    this.setState({activeCall: call, status: call.getStateText()});
                 }
             };
             endpoint.addListener("call_changed", this.callChanged);
