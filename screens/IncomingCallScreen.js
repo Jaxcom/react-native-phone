@@ -21,9 +21,14 @@ class IncomingCallScreen extends React.Component {
     }
     
     async cancel () {
-        const {endpoint, activeCall} = await getSipData();
-        await endpoint.declineCall(activeCall);
-        this.props.navigation.navigate('App');
+        try {
+            const {endpoint, activeCall} = await getSipData();
+            await endpoint.declineCall(activeCall);
+        } catch (err) {
+            console.error(err.message);
+        } finally {
+            this.props.navigation.navigate('App');
+        }
     }
     
     render () {

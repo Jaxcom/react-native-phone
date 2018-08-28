@@ -21,7 +21,7 @@ class CallsScreen extends React.Component {
   
   state = {
     phoneNumber: '+1'
-  }
+  };
 
   pressButton(digit){
     let {phoneNumber} = this.state;
@@ -49,7 +49,7 @@ class CallsScreen extends React.Component {
     const {phoneNumber} = this.state;
     console.log(`Calling to ${phoneNumber}`);
     const data = await getSipData();
-    data.activeCall = await data.endpoint.makeCall(data.accounts[0], phoneNumber);
+    data.activeCall = await data.endpoint.makeCall(data.accounts[0], phoneNumber, {videoCount: 0, audioCount: 1}); // audio only call
     this.props.navigation.navigate('ActiveCall', {phoneNumber});
   }
 
