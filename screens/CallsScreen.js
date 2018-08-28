@@ -20,7 +20,7 @@ class CallsScreen extends React.Component {
   };
   
   state = {
-    phoneNumber: '+79102148272'
+    phoneNumber: '+1'
   };
 
   pressButton(digit){

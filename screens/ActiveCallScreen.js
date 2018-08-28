@@ -30,10 +30,11 @@ class ActiveCallScreen extends React.Component {
     }
 
     init () {
-        getSipData().then(({endpoint, activeCall}) => {
+        getSipData().then(({endpoint, activeCall, accounts}) => {
             this.setState({endpoint, activeCall, status: activeCall.getStateText()});
             this.callChanged = call => {
                 if (activeCall.getId() === call.getId()) {
+                    console.log(call.getState());
                     this.setState({activeCall: call, status: call.getStateText()});
                 }
             };
@@ -41,15 +42,21 @@ class ActiveCallScreen extends React.Component {
         });
     }
     
-    pressButton (digit) {
+    async pressButton (digit) {
         const {endpoint, activeCall} = this.state;
-        endpoint.dtmfCall(activeCall, digit).catch(console.error);
+        try {
+            endpoint.dtmfCall(activeCall, digit);
+        } catch(err) {
+            console.error(err.message);
+        }
     }
 
     async hangup () {
         const {endpoint, activeCall} = this.state;
         try {
             await endpoint.hangupCall(activeCall);
+        } catch (err) {
+            console.error(err.message);
         } finally {
             this.props.navigation.navigate('App');
         }
@@ -59,7 +66,7 @@ class ActiveCallScreen extends React.Component {
         const phoneNumber = this.props.navigation.getParam('phoneNumber', 'Unknown number');
         return (<View style={styles.container}>
             <View style={activeCallStyles.phoneNumberContainer}><Text style={activeCallStyles.phoneNumber}>{phoneNumber}</Text></View>
-            {this.state.status !== 'CONFIRMED' ? <View style={activeCallStyles.statusContainer}><Text style={activeCallStyles.status}>{this.state.status} ...</Text></View> :
+            {['CONFIRMED', 'EARLY'].indexOf(this.state.status) < 0 ? <View style={activeCallStyles.statusContainer}><Text style={activeCallStyles.status}>{this.state.status} ...</Text></View> :
             <View style={activeCallStyles.dialerContainer}><Dialpad pressButton={this.pressButton.bind(this)}/></View>}
             <View style={{position: 'absolute', left: 0, right: 0, bottom: 0, justifyContent:'center', alignItems:'center', flex: 1, flexDirection:'row'}}>
             <CallButton onPress={this.hangup.bind(this)} color="red" />
