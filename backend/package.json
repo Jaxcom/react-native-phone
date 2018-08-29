@@ -3,10 +3,18 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "scripts": {
+    "start": "node -e \"require('./index')().then(app => {app.listen(process.env.PORT || 3000); console.log('Ready');});\""
+  },
   "dependencies": {
     "@bandwidth/node-bandwidth-extra": "^1.0.1",
+    "debug": "^3.1.0",
+    "dotenv": "^6.0.0",
+    "ioredis": "^4.0.0",
     "koa": "^2.5.2",
+    "koa-body": "^4.0.4",
     "koa-router": "^7.4.0",
-    "node-bandwidth": "^2.6.5"
+    "node-bandwidth": "^2.6.5",
+    "randomstring": "^1.1.5"
   }
 }
