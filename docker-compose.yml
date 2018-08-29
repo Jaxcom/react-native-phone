@@ -1,7 +1,7 @@
 version: '2'
 services:
     web:
-        image: BandwidthExamples/react-native-phone:latest
+        image: bandwidthexamples/react-native-phone
         depends_on:
             - redis
         environment:
