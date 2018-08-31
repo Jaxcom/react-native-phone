@@ -54,7 +54,7 @@ export default class SignInScreen extends React.Component {
     state = {
         inProgress: false,
         values: {
-            baseUrl: 'https://some-server',
+            baseUrl: 'https://',
         }
     }
 
@@ -106,10 +106,8 @@ export default class SignInScreen extends React.Component {
             }
             this.props.navigation.navigate('App');
         } catch(err) {
-            this.setState({error: err.message});
-        } finally {
-            this.setState({inProgress: false});
-        }
+            this.setState({error: err.message, inProgress: false});
+        } 
     };
 
     _formValuesChanged = values => this.setState({values});
