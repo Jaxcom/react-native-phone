@@ -14,7 +14,7 @@ export default class SettingsScreen extends React.Component {
   }
 
   componentWillMount() {
-    console.log('Reading application setting...')
+    console.log('Reading application settings...')
     Promise.all([
       SecureStore.getItemAsync('sip'),
       AsyncStorage.getItem('userId'),
