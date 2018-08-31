@@ -1,27 +1,14 @@
 {
-  "expo": {
-    "name": "react-native-phone",
-    "description": "A simple phone for Bandwidth",
-    "slug": "react-native-phone",
-    "privacy": "public",
-    "sdkVersion": "29.0.0",
-    "platforms": ["ios", "android"],
-    "version": "1.0.0",
-    "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
-    "splash": {
-      "image": "./assets/images/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
-    },
-    "updates": {
-      "fallbackToCacheTimeout": 0
-    },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
-    "ios": {
-      "supportsTablet": false
+  "name": "react-native-phone-backend",
+  "description": "Backend for react-native-phone",
+  "repository": "https://github.com/BandwidthExamples/react-native-phone.git",
+  "logo": "https://avatars2.githubusercontent.com/u/12057884?v=3&s=200",
+  "keywords": ["node", "bandwidth", "react", "react-native"],
+  "env": {
+    "AREA_CODE": {
+      "description": "Optional area code for reserved numbers",
+      "value": "910"
     }
-  }
+  },
+  "addons": ["heroku-redis:hobby-dev"]
 }
