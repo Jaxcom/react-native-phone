@@ -8,6 +8,9 @@
     "AREA_CODE": {
       "description": "Optional area code for reserved numbers",
       "value": "910"
+    },
+    "DEBUG": {
+      "value": "*"
     }
   },
   "addons": ["heroku-redis:hobby-dev"]
