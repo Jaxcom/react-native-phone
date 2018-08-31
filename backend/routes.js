@@ -92,6 +92,7 @@ router.post('/:userId/callback', async ctx => {
         // incoming calls
         debug('Incoming call %s -> %s', from, userData.phoneNumber);
         await api.Call.transfer(callId, {
+            transferCallerId: from,
             transferTo: userData.sipUri
         });
     }
