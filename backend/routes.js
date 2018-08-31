@@ -20,7 +20,7 @@ async function getEndpoint(api, domainId, sipName) {
 }
 
 router.post('/login', async ctx => {
-    let {userId, domainId, apiToken, apiSecret, password} = ctx.request.body;
+    let {userId, domainId, apiToken, apiSecret} = ctx.request.body;
     let number = ctx.request.body.phoneNumber;
     const api = new Client({userId, apiToken, apiSecret});
     const callbackUrl = `${ctx.request.origin}/${userId}/callback`;
@@ -51,6 +51,7 @@ router.post('/login', async ctx => {
     }
     debug('Getting endpoint data');
     const sipName = `num-${number.substr(1)}`;
+    const password = randomstring.generate(24);
     let {id, sipUri} = (await getEndpoint(api, domainId, sipName)) || {};
     if (id) {
         await api.Endpoint.update(domainId, id, {credentials: {password}});
@@ -67,7 +68,7 @@ router.post('/login', async ctx => {
     }
     debug('Saving user data');
     await redis.set(userId, JSON.stringify({apiToken, apiSecret, sipUri, phoneNumber: number}));
-    ctx.body = {sipUri, phoneNumber: number};
+    ctx.body = {sipUri, phoneNumber: number, password};
 });
 
 router.post('/:userId/callback', async ctx => {
