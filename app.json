@@ -1,26 +1,14 @@
 {
-  "name": "react-native-phone-backend",
-  "description": "Backend for react-native-phone",
-  "repository": "https://github.com/BandwidthExamples/react-native-phone.git",
-  "logo": "https://avatars2.githubusercontent.com/u/12057884?v=3&s=200",
-  "keywords": ["node", "bandwidth", "react", "react-native"],
-  "env": {
-    "AREA_CODE": {
-      "description": "Optional area code for reserved numbers",
-      "value": "910"
-    },
-    "DEBUG": {
-      "value": "*"
-    }
-  },
-  "addons": ["heroku-redis:hobby-dev"],
   "expo": {
     "name": "react-native-phone",
     "description": "A simple phone for Bandwidth",
     "slug": "react-native-phone",
     "privacy": "public",
     "sdkVersion": "29.0.0",
-    "platforms": ["ios", "android"],
+    "platforms": [
+      "ios",
+      "android"
+    ],
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -36,7 +24,21 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": false
+      "supportsTablet": false,
+      "bundleIdentifier": "ReactNativePhone",
+      "publishBundlePath": "ios/react-native-phone/Supporting/shell-app.bundle",
+      "publishManifestPath": "ios/react-native-phone/Supporting/shell-app-manifest.json"
+    },
+    "isDetached": true,
+    "detach": {
+      "iosExpoViewUrl": "https://s3.amazonaws.com/exp-exponent-view-code/ios-v2.7.8-sdk29.0.0-02bd60c8-f134-4f5e-b5c0-1898ffb57231.tar.gz",
+      "androidExpoViewUrl": "https://s3.amazonaws.com/exp-exponent-view-code/android-v2.7.2-sdk29.0.0-54e8f46d-36a6-460f-b0f9-e1043f28b215.tar.gz"
+    },
+    "scheme": "exp4756fe406d1e4853acc990f76ed069e1",
+    "android": {
+      "package": "com.bandwidth.ReactNativePhone",
+      "publishBundlePath": "android/app/src/main/assets/shell-app.bundle",
+      "publishManifestPath": "android/app/src/main/assets/shell-app-manifest.json"
     }
   }
 }
