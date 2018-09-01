@@ -9,3 +9,5 @@ build
 generated
 android/local.properties
 Pods
+.DS_Store
+yarn-error.log
