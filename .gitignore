@@ -7,3 +7,4 @@ node_modules
 .gradle
 build
 generated
+android/local.properties
