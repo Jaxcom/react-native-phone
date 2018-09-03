@@ -10,6 +10,10 @@ const appName = 'React Native Phone';
 
 const redis = new Redis(process.env.REDIS_URL || 'redis://localhost:6379');
 
+router.getBandwidthApi = settings => {
+    return new Client(settings);
+}
+
 async function getEndpoint(api, domainId, sipName) {
     try {
         const ep = await endpoint.getEndpoint(api, domainId, sipName);
@@ -22,7 +26,7 @@ async function getEndpoint(api, domainId, sipName) {
 router.post('/login', async ctx => {
     let {userId, domainId, apiToken, apiSecret} = ctx.request.body;
     let number = ctx.request.body.phoneNumber;
-    const api = new Client({userId, apiToken, apiSecret});
+    const api = router.getBandwidthApi({userId, apiToken, apiSecret});
     const callbackUrl = `${ctx.request.origin}/${userId}/callback`;
     debug('Getting application data');
     const applicationId = await application.getOrCreateApplication(api, {
@@ -79,7 +83,7 @@ router.post('/:userId/callback', async ctx => {
         debug('No user data for %s (event type %s)', ctx.params.userId, eventType);
         return;
     }
-    const api = new Client({userId: ctx.params.userId, apiToken: userData.apiToken, apiSecret: userData.apiSecret});
+    const api = router.getBandwidthApi({userId: ctx.params.userId, apiToken: userData.apiToken, apiSecret: userData.apiSecret});
     if (from === userData.sipUri) {
         // outgoing calls
         debug('Outgoing call %s -> %s', userData.phoneNumber, to);

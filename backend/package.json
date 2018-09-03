@@ -4,7 +4,8 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "node -e \"require('./index')().then(app => {app.listen(process.env.PORT || 3000); console.log('Ready');});\""
+    "start": "node -e \"require('./index')().then(app => {app.listen(process.env.PORT || 3000); console.log('Ready');});\"",
+    "test": "ava"
   },
   "dependencies": {
     "@bandwidth/node-bandwidth-extra": "^1.0.1",
@@ -16,5 +17,9 @@
     "koa-router": "^7.4.0",
     "node-bandwidth": "^2.6.5",
     "randomstring": "^1.1.5"
+  },
+  "devDependencies": {
+    "ava": "^0.25.0",
+    "testdouble": "^3.8.1"
   }
 }
