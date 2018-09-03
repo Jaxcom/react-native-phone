@@ -1,5 +1,5 @@
 {
-  "name": "my-new-project",
+  "name": "react-native-phone",
   "main": "node_modules/expo/AppEntry.js",
   "private": true,
   "scripts": {
@@ -7,7 +7,8 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "eject": "expo eject",
-    "test": "node ./node_modules/jest/bin/jest.js --watchAll"
+    "test": "node ./node_modules/jest/bin/jest.js --watchAll",
+    "postinstall": "yarn --cwd ./backend"
   },
   "jest": {
     "preset": "jest-expo"
@@ -15,6 +16,13 @@
   "dependencies": {
     "@expo/samples": "2.1.1",
     "expo": "29.0.0",
+    "expo-analytics-segment": "^1.0.0-rc.0",
+    "expo-barcode-scanner": "^1.0.0-rc.0",
+    "expo-font": "^1.0.0-rc.0",
+    "expo-image-loader-interface": "^1.0.0-rc.0",
+    "expo-location": "^1.0.0-rc.0",
+    "expo-media-library": "^1.0.0-rc.0",
+    "expo-print": "^1.0.0-rc.0",
     "expokit": "1.5.0",
     "react": "16.3.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-29.0.0.tar.gz",

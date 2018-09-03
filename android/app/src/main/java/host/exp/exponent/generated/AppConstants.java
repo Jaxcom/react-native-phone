@@ -14,7 +14,11 @@ public class AppConstants {
   public static final String VERSION_NAME = "2.7.2";
   public static String INITIAL_URL = "exp://exp.host/@avbel/react-native-phone";
   public static final boolean IS_DETACHED = true;
+<<<<<<< HEAD
   public static final String SHELL_APP_SCHEME = "exp51eb280a3d164c8a955bd6acde52b069";
+=======
+  public static final String SHELL_APP_SCHEME = "exp4756fe406d1e4853acc990f76ed069e1";
+>>>>>>> a654a7dbc866732ee28df7a72142c5114e80a908
   public static final String RELEASE_CHANNEL = "default";
   public static boolean SHOW_LOADING_VIEW_IN_SHELL_APP = false;
   public static boolean ARE_REMOTE_UPDATES_ENABLED = true;

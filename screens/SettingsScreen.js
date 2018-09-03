@@ -13,11 +13,13 @@ export default class SettingsScreen extends React.Component {
     phoneNumber: ''
   }
 
-  componentDidMount() {
-    Promise.all(
+  componentWillMount() {
+    console.log('Reading application settings...')
+    Promise.all([
       SecureStore.getItemAsync('sip'),
       AsyncStorage.getItem('userId'),
-      AsyncStorage.getItem('phoneNumber'))
+      AsyncStorage.getItem('phoneNumber')
+    ])
       .then(r => {
         const sip = JSON.parse(r[0] || '{}')
         this.setState({sipUri: sip.sipUri, userId: r[1], phoneNumber: r[2]})

@@ -11,7 +11,11 @@
         "client_id": "android:host.exp.exponent",
         "client_type": 1,
         "android_client_info": {
+<<<<<<< HEAD
           "package_name": "com.bandwidth.reactNativePhone",
+=======
+          "package_name": "com.bandwidth.ReactNativePhone",
+>>>>>>> a654a7dbc866732ee28df7a72142c5114e80a908
           "certificate_hash": ""
         }
       },

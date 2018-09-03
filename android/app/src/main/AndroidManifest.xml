@@ -5,11 +5,19 @@
   xmlns:tools="http://schemas.android.com/tools">
 
   <permission
+<<<<<<< HEAD
     android:name="com.bandwidth.reactNativePhone.permission.C2D_MESSAGE"
     android:protectionLevel="signature"/>
 
   <!-- These are required permissions to make the app run -->
   <uses-permission android:name="com.bandwidth.reactNativePhone.permission.C2D_MESSAGE" />
+=======
+    android:name="com.bandwidth.ReactNativePhone.permission.C2D_MESSAGE"
+    android:protectionLevel="signature"/>
+
+  <!-- These are required permissions to make the app run -->
+  <uses-permission android:name="com.bandwidth.ReactNativePhone.permission.C2D_MESSAGE" />
+>>>>>>> a654a7dbc866732ee28df7a72142c5114e80a908
   <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
   <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
   <uses-permission android:name="android.permission.INTERNET" />
@@ -39,12 +47,29 @@
   <uses-permission android:name="android.permission.READ_SMS" />
   <!-- END OPTIONAL PERMISSIONS -->
 
+<<<<<<< HEAD
+=======
+  <uses-feature android:name="android.hardware.camera" />
+  <uses-feature android:name="android.hardware.camera.autofocus"/>
+
+  <uses-permission android:name="android.permission.INTERNET" />
+  <uses-permission android:name="android.permission.CAMERA" />
+  <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+  <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS"/>
+  <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+  <uses-permission android:name="android.permission.WAKE_LOCK"/>
+  <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS"/>
+  <uses-permission android:name="android.permission.CALL_PHONE"/>
+  <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
+>>>>>>> a654a7dbc866732ee28df7a72142c5114e80a908
   <!-- ADD TEST PERMISSIONS HERE -->
 
   <uses-feature android:glEsVersion="0x00020000" android:required="false" />
   <uses-feature android:name="android.software.leanback" android:required="false" />
   <uses-feature android:name="android.hardware.touchscreen" android:required="false" />
 
+<<<<<<< HEAD
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus"/>
 
@@ -58,6 +83,8 @@
     <uses-permission android:name="android.permission.CALL_PHONE"/>
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
+=======
+>>>>>>> a654a7dbc866732ee28df7a72142c5114e80a908
   <application
     android:name=".MainApplication"
     android:allowBackup="true"
@@ -88,7 +115,11 @@
       android:theme="@style/Theme.Exponent.Splash"
       android:windowSoftInputMode="adjustResize">
       <intent-filter>
+<<<<<<< HEAD
         <data android:scheme="exp51eb280a3d164c8a955bd6acde52b069"/>
+=======
+        <data android:scheme="exp4756fe406d1e4853acc990f76ed069e1"/>
+>>>>>>> a654a7dbc866732ee28df7a72142c5114e80a908
 
         <action android:name="android.intent.action.VIEW"/>
 
@@ -166,7 +197,11 @@
         <action android:name="android.intent.action.VIEW"/>
         <category android:name="android.intent.category.DEFAULT"/>
         <category android:name="android.intent.category.BROWSABLE"/>
+<<<<<<< HEAD
         <data android:scheme="com.bandwidth.reactNativePhone" android:path="oauthredirect"/>
+=======
+        <data android:scheme="com.bandwidth.ReactNativePhone" android:path="oauthredirect"/>
+>>>>>>> a654a7dbc866732ee28df7a72142c5114e80a908
       </intent-filter>
     </activity>
 
@@ -206,10 +241,13 @@
     <service
       android:name=".ExponentIntentService"
       android:exported="false" />
+<<<<<<< HEAD
     <service
         android:name="com.carusto.ReactNativePjSip.PjSipService"
         android:enabled="true"
         android:exported="true" />
+=======
+>>>>>>> a654a7dbc866732ee28df7a72142c5114e80a908
 
     <!-- Analytics -->
     <receiver
@@ -248,7 +286,11 @@
         <action android:name="com.google.android.c2dm.intent.RECEIVE"/>
         <action android:name="com.google.android.c2dm.intent.REGISTRATION"/>
 
+<<<<<<< HEAD
         <category android:name="com.bandwidth.reactNativePhone"/>
+=======
+        <category android:name="com.bandwidth.ReactNativePhone"/>
+>>>>>>> a654a7dbc866732ee28df7a72142c5114e80a908
       </intent-filter>
     </receiver>
 
@@ -289,6 +331,14 @@
       android:exported="false">
     </service>
 
+<<<<<<< HEAD
+=======
+    <service
+        android:name="com.carusto.ReactNativePjSip.PjSipService"
+        android:enabled="true"
+        android:exported="true" />
+
+>>>>>>> a654a7dbc866732ee28df7a72142c5114e80a908
     <!-- ImagePicker native module -->
     <activity
       android:name="com.theartofdev.edmodo.cropper.CropImageActivity"

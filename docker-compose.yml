@@ -1,0 +1,17 @@
+version: '2'
+services:
+    web:
+        image: bandwidthexamples/react-native-phone
+        depends_on:
+            - redis
+        environment:
+            - PORT=3000
+            - REDIS_URL=redis://redis:6379
+            - DEBUG=*
+            - NODE_ENV=production
+        ports:
+            - "$PORT:3000"
+        restart: always
+    redis:
+        image: redis
+        restart: always

@@ -92,6 +92,7 @@
       <sourceFolder url="file://$MODULE_DIR$/src/devMinSdk/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/devMinSdk/rs" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/devMinSdk/shaders" isTestSource="false" />
+<<<<<<< HEAD
       <sourceFolder url="file://$MODULE_DIR$/src/testDevMinSdk/res" type="java-test-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/testDevMinSdk/resources" type="java-test-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/testDevMinSdk/assets" type="java-test-resource" />
@@ -99,6 +100,8 @@
       <sourceFolder url="file://$MODULE_DIR$/src/testDevMinSdk/java" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/testDevMinSdk/rs" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/testDevMinSdk/shaders" isTestSource="true" />
+=======
+>>>>>>> a654a7dbc866732ee28df7a72142c5114e80a908
       <sourceFolder url="file://$MODULE_DIR$/src/androidTestDevMinSdk/res" type="java-test-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/androidTestDevMinSdk/resources" type="java-test-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/androidTestDevMinSdk/assets" type="java-test-resource" />
@@ -106,6 +109,16 @@
       <sourceFolder url="file://$MODULE_DIR$/src/androidTestDevMinSdk/java" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/androidTestDevMinSdk/rs" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/androidTestDevMinSdk/shaders" isTestSource="true" />
+<<<<<<< HEAD
+=======
+      <sourceFolder url="file://$MODULE_DIR$/src/testDevMinSdk/res" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/testDevMinSdk/resources" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/testDevMinSdk/assets" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/testDevMinSdk/aidl" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/testDevMinSdk/java" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/testDevMinSdk/rs" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/testDevMinSdk/shaders" isTestSource="true" />
+>>>>>>> a654a7dbc866732ee28df7a72142c5114e80a908
       <sourceFolder url="file://$MODULE_DIR$/src/devKernel/res" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/devKernel/resources" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/devKernel/assets" type="java-resource" />
@@ -134,6 +147,7 @@
       <sourceFolder url="file://$MODULE_DIR$/src/debug/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/debug/rs" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/debug/shaders" isTestSource="false" />
+<<<<<<< HEAD
       <sourceFolder url="file://$MODULE_DIR$/src/androidTestDebug/res" type="java-test-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/androidTestDebug/resources" type="java-test-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/androidTestDebug/assets" type="java-test-resource" />
@@ -141,6 +155,8 @@
       <sourceFolder url="file://$MODULE_DIR$/src/androidTestDebug/java" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/androidTestDebug/rs" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/androidTestDebug/shaders" isTestSource="true" />
+=======
+>>>>>>> a654a7dbc866732ee28df7a72142c5114e80a908
       <sourceFolder url="file://$MODULE_DIR$/src/testDebug/res" type="java-test-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/testDebug/resources" type="java-test-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/testDebug/assets" type="java-test-resource" />
@@ -148,6 +164,16 @@
       <sourceFolder url="file://$MODULE_DIR$/src/testDebug/java" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/testDebug/rs" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/testDebug/shaders" isTestSource="true" />
+<<<<<<< HEAD
+=======
+      <sourceFolder url="file://$MODULE_DIR$/src/androidTestDebug/res" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/androidTestDebug/resources" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/androidTestDebug/assets" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/androidTestDebug/aidl" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/androidTestDebug/java" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/androidTestDebug/rs" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/androidTestDebug/shaders" isTestSource="true" />
+>>>>>>> a654a7dbc866732ee28df7a72142c5114e80a908
       <sourceFolder url="file://$MODULE_DIR$/src/main/res" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/main/resources" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/main/assets" type="java-resource" />
@@ -264,7 +290,10 @@
     <orderEntry type="library" scope="TEST" name="Gradle: com.squareup:javawriter:2.1.1@jar" level="project" />
     <orderEntry type="library" name="Gradle: com.android.support:support-core-ui-27.1.1" level="project" />
     <orderEntry type="library" name="Gradle: com.facebook.android:facebook-core-4.34.0" level="project" />
+<<<<<<< HEAD
     <orderEntry type="library" name="Gradle: com.android.support:support-annotations:28.0.0-rc01@jar" level="project" />
+=======
+>>>>>>> a654a7dbc866732ee28df7a72142c5114e80a908
     <orderEntry type="library" name="Gradle: expolib_v1.com.facebook.fresco:expolib_v1-imagepipeline-okhttp3-1.0.1" level="project" />
     <orderEntry type="library" name="Gradle: expolib_v1.com.squareup.okhttp3:okhttp-urlconnection:3.6.0@jar" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: org.robolectric:utils:3.8@jar" level="project" />
@@ -318,6 +347,10 @@
     <orderEntry type="library" name="Gradle: com.google.android.gms:play-services-vision-15.0.2" level="project" />
     <orderEntry type="library" name="Gradle: com.google.android.gms:play-services-auth-api-phone-15.0.1" level="project" />
     <orderEntry type="library" name="Gradle: com.google.android.gms:play-services-auth-base-15.0.1" level="project" />
+<<<<<<< HEAD
+=======
+    <orderEntry type="library" name="Gradle: com.android.support:support-annotations:28.0.0-rc02@jar" level="project" />
+>>>>>>> a654a7dbc866732ee28df7a72142c5114e80a908
     <orderEntry type="library" name="Gradle: com.google.firebase:firebase-messaging-17.1.0" level="project" />
     <orderEntry type="library" name="Gradle: com.facebook.stetho:stetho:1.3.1@jar" level="project" />
     <orderEntry type="library" name="Gradle: host.exp.exponent:expo-core-abi29_0_0-1.0.0" level="project" />

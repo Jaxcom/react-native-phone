@@ -56,6 +56,7 @@ public class MainActivity extends DetachActivity {
 
   @Override
   public void onCreate(Bundle savedInstanceState) {
+<<<<<<< HEAD
     super.onCreate(savedInstanceState);
 
     Window w = getWindow();
@@ -63,5 +64,14 @@ public class MainActivity extends DetachActivity {
             WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED,
             WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED
     );
+=======
+      super.onCreate(savedInstanceState);
+
+      Window w = getWindow();
+      w.setFlags(
+          WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED,
+          WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED
+      );
+>>>>>>> a654a7dbc866732ee28df7a72142c5114e80a908
   }
 }

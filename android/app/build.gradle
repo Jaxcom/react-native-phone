@@ -20,7 +20,11 @@ android {
   buildToolsVersion '27.0.3'
 
   defaultConfig {
+<<<<<<< HEAD
     applicationId 'com.bandwidth.reactNativePhone'
+=======
+    applicationId 'com.bandwidth.ReactNativePhone'
+>>>>>>> a654a7dbc866732ee28df7a72142c5114e80a908
     targetSdkVersion 26
     versionCode 1
     versionName '1.0.0'
