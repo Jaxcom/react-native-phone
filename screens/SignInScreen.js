@@ -1,6 +1,6 @@
 import React from 'react';
 import {SecureStore} from 'expo';
-import t from 'tcomb-form-native'
+import t from 'tcomb-form-native';
 
 import {
     Button,
