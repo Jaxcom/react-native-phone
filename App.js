@@ -3,6 +3,7 @@ import { Platform, StatusBar, StyleSheet, View } from 'react-native';
 import { AppLoading,  Font, Icon } from 'expo';
 import AppNavigator from './navigation/AppNavigator';
 import {getSipData} from './lib/sip';
+import {registerForPushNotifications} from './lib/notification';
 import {setNavigator} from './lib/navigation';
 
 export default class App extends React.Component {
@@ -39,6 +40,7 @@ export default class App extends React.Component {
         'space-mono': require('./assets/fonts/SpaceMono-Regular.ttf'),
       }),
       getSipData(),
+      registerForPushNotifications(),
     ]);
   };
 

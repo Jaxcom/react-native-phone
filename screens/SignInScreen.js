@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 
 import {getSipData} from '../lib/sip';
+import {registerForPushNotifications} from './lib/notification';
 
 const Form = t.form.Form;
 
@@ -100,6 +101,7 @@ export default class SignInScreen extends React.Component {
                 await AsyncStorage.setItem('phoneNumber', phoneNumber);
                 await AsyncStorage.setItem('baseUrl', baseUrl);
                 await getSipData();
+                await registerForPushNotifications();
             } else {
                 const {error} = await response.json();
                 throw new Error(error || 'Unknown error from backend server');

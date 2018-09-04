@@ -3,6 +3,7 @@ const randomstring = require('randomstring');
 const {application, phoneNumber, endpoint} = require('@bandwidth/node-bandwidth-extra');
 const Client = require('node-bandwidth');
 const Redis = require('ioredis');
+const Expo = require('expo-server-sdk');
 const debug = require('debug')('routes');
 
 const router = new Router();
@@ -103,9 +104,19 @@ router.post('/:userId/callback', async ctx => {
         }
     }
     if (eventType === 'sms') {
-        if (from === userData.phoneNumber || to === userData.phoneNumber) {
+        if (to === userData.phoneNumber) {
             const message = await api.Message.get(messageId);
-            // TODO send notification
+            const expo = new Expo();
+            if (!Expo.isExpoPushToken(userData.token)) {
+                return;
+            }
+            const chunk = expo.chunkPushNotifications([{
+                to: userData.token,
+                sound: 'default',
+                body: message.text,
+                data: JSON.stringify(message),
+            }])[0];
+            await expo.sendPushNotificationsAsync(chunk);
         }
     }
 });
@@ -139,6 +150,14 @@ router.post('/sendMessage', async ctx => {
         text
     })).id;
     ctx.body = {id};
+});
+
+router.post('/registerForPush', async ctx => {
+    ctx.body = '';
+    const {token, userId} = ctx.request.body;
+    const userData = JSON.parse((await redis.get(userId)) || '{}');
+    userData.token = token;
+    await redis.set(userId, JSON.stringify(userData));
 });
 
 module.exports = router;
