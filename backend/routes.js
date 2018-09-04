@@ -76,30 +76,69 @@ router.post('/login', async ctx => {
 });
 
 router.post('/:userId/callback', async ctx => {
-    const {eventType, from, to, callId} = ctx.request.body;
+    const {eventType, from, to, callId, messageId} = ctx.request.body;
     ctx.body = ' ';
     const userData = JSON.parse((await redis.get(ctx.params.userId)) || '{}');
-    if (!userData.apiToken || !userData.apiSecret || eventType !== 'answer') {
+    if (!userData.apiToken || !userData.apiSecret) {
         debug('No user data for %s (event type %s)', ctx.params.userId, eventType);
         return;
     }
     const api = router.getBandwidthApi({userId: ctx.params.userId, apiToken: userData.apiToken, apiSecret: userData.apiSecret});
-    if (from === userData.sipUri) {
-        // outgoing calls
-        debug('Outgoing call %s -> %s', userData.phoneNumber, to);
-        await api.Call.transfer(callId, {
-            transferCallerId: userData.phoneNumber,
-            transferTo: to,
-        });
+    if (eventType === 'answer') {
+        if (from === userData.sipUri) {
+            // outgoing calls
+            debug('Outgoing call %s -> %s', userData.phoneNumber, to);
+            await api.Call.transfer(callId, {
+                transferCallerId: userData.phoneNumber,
+                transferTo: to,
+            });
+        }
+        if (to === userData.phoneNumber) {
+            // incoming calls
+            debug('Incoming call %s -> %s', from, userData.phoneNumber);
+            await api.Call.transfer(callId, {
+                transferCallerId: from,
+                transferTo: userData.sipUri
+            });
+        }
     }
-    if (to === userData.phoneNumber) {
-        // incoming calls
-        debug('Incoming call %s -> %s', from, userData.phoneNumber);
-        await api.Call.transfer(callId, {
-            transferCallerId: from,
-            transferTo: userData.sipUri
-        });
+    if (eventType === 'sms') {
+        if (from === userData.phoneNumber || to === userData.phoneNumber) {
+            const message = await api.Message.get(messageId);
+            // TODO send notification
+        }
     }
+});
+
+router.post('/loadMessages', async ctx => {
+    const getAllMessages = async promise => {
+        let result = await promise;
+        let {messages} = result;
+        while (result.hasNextPage) {
+            result = await result.getNextPage();
+            messages = messages.concat(result.messages);
+        }
+        return messages;    
+    };
+    
+    const {phoneNumber} = ctx.request.body;
+    const api = router.getBandwidthApi(ctx.request.body);
+    const messagesTo = await getAllMessages(api.Message.list({size: 1000, to: phoneNumber}));
+    const messagesFrom = await getAllMessages(api.Message.list({size: 1000, from: phoneNumber}));
+    const messages = [].concat(messagesTo, messagesFrom);
+    messages.sort((m1, m2) => m1.time.localeCompare(m2.time));
+    ctx.body = messages;
+});
+
+router.post('/sendMessage', async ctx => {
+    const {to, text, phoneNumber} = ctx.request.body;
+    const api = router.getBandwidthApi(ctx.request.body);
+    const id = (await api.Message.send({
+        from: phoneNumber,
+        to,
+        text
+    })).id;
+    ctx.body = {id};
 });
 
 module.exports = router;
