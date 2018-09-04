@@ -105,7 +105,13 @@ router.post('/:userId/callback', async ctx => {
     }
     if (eventType === 'sms') {
         if (to === userData.phoneNumber) {
+            debug('Incoming message %s -> %s', from, userData.phoneNumber);
+            
             const message = await api.Message.get(messageId);
+            // send notification to active clients
+            await redis.publish(userData.phoneNumber, JSON.stringify(message));
+            
+            // send push notification
             const expo = new Expo();
             if (!Expo.isExpoPushToken(userData.token)) {
                 return;
