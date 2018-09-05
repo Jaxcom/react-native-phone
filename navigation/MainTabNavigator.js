@@ -60,6 +60,6 @@ SettingsStack.navigationOptions = {
 
 export default createBottomTabNavigator({
   CallsStack,
-  //MessagesStack,
+  MessagesStack,
   SettingsStack,
 });

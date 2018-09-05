@@ -1,6 +1,7 @@
 import React from 'react';
 import {SecureStore} from 'expo';
 import t from 'tcomb-form-native';
+import {postJSON} from '../lib/fetch';
 
 import {
     Button,
@@ -86,26 +87,17 @@ export default class SignInScreen extends React.Component {
             if (baseUrl.endsWith('/')) {
                 baseUrl = baseUrl.substr(0, baseUrl.length - 1)
             }
-            const response = await await fetch(`${baseUrl}/login`, {
-                method: 'POST',
-                headers: {
-                    Accept: 'application/json',
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(data),
-            });
-            if (response.ok) {
-                const {sipUri, password, phoneNumber} = await response.json();
-                await SecureStore.setItemAsync('sip', JSON.stringify({sipUri, password}));
-                await AsyncStorage.setItem('userId', data.userId);
-                await AsyncStorage.setItem('phoneNumber', phoneNumber);
-                await AsyncStorage.setItem('baseUrl', baseUrl);
-                await getSipData();
-                await registerForPushNotifications();
-            } else {
-                const {error} = await response.json();
-                throw new Error(error || 'Unknown error from backend server');
-            }
+            const {sipUri, password, phoneNumber} = await postJSON(`${baseUrl}/login`, data);
+            await SecureStore.setItemAsync('sip', JSON.stringify({sipUri, password}));
+            await SecureStore.setItemAsync('bandwidth', JSON.stringify({
+                userId: data.userId,
+                apiToken: data.apiToken,
+                apiSecret: data.apiSecret
+            }));
+            await AsyncStorage.setItem('phoneNumber', phoneNumber);
+            await AsyncStorage.setItem('baseUrl', baseUrl);
+            await getSipData();
+            await registerForPushNotifications();
             this.props.navigation.navigate('App');
         } catch(err) {
             this.setState({error: err.message, inProgress: false});

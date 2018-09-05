@@ -1,10 +1,10 @@
 import React from 'react';
 import {
   ActivityIndicator,
-  AsyncStorage,
   StatusBar,
   View,
 } from 'react-native';
+import {SecureStore} from 'expo';
 import styles from '../constants/Styles';
 
 export default class AuthLoadingScreen extends React.Component {
@@ -14,8 +14,8 @@ export default class AuthLoadingScreen extends React.Component {
   }
 
   _bootstrapAsync = async () => {
-    const userId = await AsyncStorage.getItem('userId');
-    this.props.navigation.navigate(userId ? 'App' : 'Auth');
+    const bandwidth = await SecureStore.getItemAsync('bandwidth');
+    this.props.navigation.navigate(bandwidth ? 'App' : 'Auth');
   };
 
   render() {

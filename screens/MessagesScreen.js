@@ -1,18 +1,59 @@
 import React from 'react';
-import {
-  ScrollView,
-  View,
-} from 'react-native';
+import {AsyncStorage} from 'react-native';
+import {GiftedChat} from 'react-native-gifted-chat';
+import {SecureStore} from 'expo';
+import {postJSON} from '../lib/fetch';
+import {addIncomingMessagesHandler, removeIncomingMessagesHandler} from '../lib/notification';
 
-import styles from '../constants/Styles';
+export default class MessagesScreen extends React.Component {
+  state = {
+    phoneNumber: '',
+    messages: []
+  }
 
-export default class HomeScreen extends React.Component {
+  componentWillMount() {
+    console.log('Loading messages ...')
+    const bandwidth = await SecureStore.getItemAsync('bandwidth');
+    const baseUrl = await AsyncStorage.getItem('baseUrl');
+    const phoneNumber = await AsyncStorage.getItem('phoneNumber');
+    const messages = await postJSON(`${baseUrl}/loadMessages`, Object.assign(bandwidth, {phoneNumber}));
+    this.setState({messages: messages.map(this._prepareMessage)});
+    this.onIncomingMessage = this.onIncomingMessage.bind(this);
+    addIncomingMessagesHandler(this.onIncomingMessage);
+  }
+
+  componentWillUnmount() {
+    removeIncomingMessagesHandler(this.onIncomingMessage);
+  }
+
+  _prepareMessage(message){
+    return message;
+  }
+
+  onIncomingMessage(message){
+    this.setState((previousState) => ({
+      messages: GiftedChat.append(previousState.messages, [this._prepareMessage(message)]),
+    }));
+  }
+
+  async onSend(messages = []) {
+    const bandwidth = await SecureStore.getItemAsync('bandwidth');
+    const baseUrl = await AsyncStorage.getItem('baseUrl');
+    const message = postJSON(`${baseUrl}/sendMessage`, Object.assign(bandwidth, messages[0]));
+    this.setState((previousState) => ({
+      messages: GiftedChat.append(previousState.messages, [this._prepareMessage(message)]),
+    }));
+  }
+  
   render() {
     return (
-      <View style={styles.container}>
-        <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
-        </ScrollView>
-      </View>
+      <GiftedChat 
+        messages={this.state.messages}
+        onSend={messages => this.onSend(messages)}
+        user={{
+          from: this.state.phoneNumber,
+        }}>
+      </GiftedChat>
     );
   }
 }
