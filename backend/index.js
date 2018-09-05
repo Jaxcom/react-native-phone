@@ -1,10 +1,20 @@
 const Koa = require('koa');
 const koaBody = require('koa-body');
 const websockify = require('koa-websocket');
-const router = require('./routes');
-const wsRouter = require('./ws-routes');
+const Client = require('node-bandwidth');
 
 require('dotenv').config();
+
+function prepareRouter(router) {
+    router.getBandwidthApi = settings => {
+        return new Client(settings);
+    };
+    return router;
+}
+
+const router = prepareRouter(require('./routes'));
+const wsRouter = prepareRouter(require('./ws-routes'));
+
 
 async function main() {
     const app = websockify(new Koa());

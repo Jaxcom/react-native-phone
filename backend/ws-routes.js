@@ -1,18 +1,12 @@
 const Router = require('koa-router');
-const Client = require('node-bandwidth');
 const Redis = require('ioredis');
 const debug = require('debug')('ws-routes');
 
 const router = new Router();
 
-router.getBandwidthApi = settings => {
-    return new Client(settings);
-}
-
 router.getRedis = () => {
     return new Redis(process.env.REDIS_URL || 'redis://localhost:6379');
-}
-
+};
 
 router.all('/:userId/messages', async ctx => {
     debug('New websocket connection for user %s', ctx.params.userId);

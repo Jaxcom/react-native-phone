@@ -1,7 +1,6 @@
 const Router = require('koa-router');
 const randomstring = require('randomstring');
 const {application, phoneNumber, endpoint} = require('@bandwidth/node-bandwidth-extra');
-const Client = require('node-bandwidth');
 const Redis = require('ioredis');
 const Expo = require('expo-server-sdk');
 const debug = require('debug')('routes');
@@ -10,10 +9,6 @@ const router = new Router();
 const appName = 'React Native Phone';
 
 const redis = new Redis(process.env.REDIS_URL || 'redis://localhost:6379');
-
-router.getBandwidthApi = settings => {
-    return new Client(settings);
-}
 
 async function getEndpoint(api, domainId, sipName) {
     try {
