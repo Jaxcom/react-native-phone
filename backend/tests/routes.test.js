@@ -24,7 +24,7 @@ test('it should return router instance', async t => {
 });
 
 
-test('POST /login should configure bandwidth app, reserve a number and sip enpoint', async t => {
+test.serial('POST /login should configure bandwidth app, reserve a number and sip enpoint', async t => {
     const ctx = {
         path: '/login',
         method: 'POST',
@@ -65,7 +65,7 @@ test('POST /login should configure bandwidth app, reserve a number and sip enpoi
     t.is(ctx.body.password, 'random');
 });
 
-test('POST /login should reuse existing number and domain', async t => {
+test.serial('POST /login should reuse existing number and domain', async t => {
     const ctx = {
         path: '/login',
         method: 'POST',
@@ -113,7 +113,7 @@ test('POST /login should reuse existing number and domain', async t => {
     t.is(ctx.body.password, 'random');
 });
 
-test('POST /userId/callback should handle outgoing calls', async t => {
+test.serial('POST /userId/callback should handle outgoing calls', async t => {
     const ctx = {
         path: '/userId/callback',
         method: 'POST',
@@ -147,7 +147,7 @@ test('POST /userId/callback should handle outgoing calls', async t => {
     t.pass();
 });
 
-test('POST /userId/callback should handle incoming calls', async t => {
+test.serial('POST /userId/callback should handle incoming calls', async t => {
     const ctx = {
         path: '/userId/callback',
         method: 'POST',
@@ -177,6 +177,88 @@ test('POST /userId/callback should handle incoming calls', async t => {
         transferCallerId: '+11234567891',
         transferTo: 'sip:num-11234567890@test.com',
     })).thenResolve('newCallId2');
+    await routes(ctx, null);
+    t.pass();
+});
+
+test.serial('POST /loadMessages should return all messages for given number', async t => {
+    const ctx = {
+        path: '/loadMessages',
+        method: 'POST',
+        request: {
+            body: {
+                userId: 'userId',
+                apiToken: 'apiToken',
+                apiSecret: 'apiSecret',
+                phoneNumber: '+11234567890'
+            }
+        }
+    };
+    const mockApi = {
+        Message: {
+            list: td.function()
+        }
+    };
+    router.getBandwidthApi = () => mockApi;
+    td.when(mockApi.Message.list({size: 1000, to: '+11234567890'})).thenResolve({
+        messages: [{time: '2018-09-05T08:20:00'}],
+        hasNextPage: true,
+        getNextPage: () => Promise.resolve({
+            messages: [{time: '2018-09-05T09:01:00'}],
+            hasNextPage: false
+        })
+    });
+    td.when(mockApi.Message.list({size: 1000, from: '+11234567890'})).thenResolve({
+        messages: [{time: '2018-09-05T09:00:00'}],
+        hasNextPage: false
+    });
+    await routes(ctx, null);
+    t.is(ctx.body.length, 3);
+});
+
+test.serial('POST /sendMessage should send a message', async t => {
+    const ctx = {
+        path: '/sendMessage',
+        method: 'POST',
+        request: {
+            body: {
+                userId: 'userId',
+                apiToken: 'apiToken',
+                apiSecret: 'apiSecret',
+                phoneNumber: '+11234567890',
+                to: '+11234567891',
+                text: 'Hello'
+            }
+        }
+    };
+    const mockApi = {
+        Message: {
+            send: td.function(),
+            get: td.function()
+        }
+    };
+    router.getBandwidthApi = () => mockApi;
+    td.when(mockApi.Message.send({
+        from: '+11234567890',
+        to: '+11234567891',
+        text: 'Hello'
+    })).thenResolve({id: 'id'});
+    td.when(mockApi.Message.get('id')).thenResolve({});
+    await routes(ctx, null);
+    t.truthy(ctx.body);
+});
+
+test('POST /registerForPush should save push token', async t => {
+    const ctx = {
+        path: '/registerForPush',
+        method: 'POST',
+        request: {
+            body: {
+                userId: 'userId',
+                token: '1234567890'
+            }
+        }
+    };
     await routes(ctx, null);
     t.pass();
 });

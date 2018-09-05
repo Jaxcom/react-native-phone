@@ -11,9 +11,13 @@ router.getBandwidthApi = settings => {
 
 
 router.all('/:userId/messages', async ctx => {
+    debug('New websocket connection for user %s', ctx.params.userId);
     const redis = new Redis(process.env.REDIS_URL || 'redis://localhost:6379');
     await redis.connect();
     const userData = JSON.parse((await redis.get(ctx.params.userId)) || '{}');
+    if (!userData.phoneNumber) {
+        return ctx.throw(404);
+    }
     redis.subscribe(userData.phoneNumber);
     redis.on('message', (channel, message) => {
         debug('Sending message to websocket (userId %s)', ctx.params.userId);
