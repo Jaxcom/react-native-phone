@@ -11,7 +11,7 @@ export default class MessagesScreen extends React.Component {
     messages: []
   }
 
-  componentWillMount() {
+  async componentWillMount() {
     console.log('Loading messages ...')
     const bandwidth = await SecureStore.getItemAsync('bandwidth');
     const baseUrl = await AsyncStorage.getItem('baseUrl');

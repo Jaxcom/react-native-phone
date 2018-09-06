@@ -12,7 +12,7 @@ import {
 } from 'react-native';
 
 import {getSipData} from '../lib/sip';
-import {registerForPushNotifications} from './lib/notification';
+import {registerForPushNotifications} from '../lib/notification';
 
 const Form = t.form.Form;
 
