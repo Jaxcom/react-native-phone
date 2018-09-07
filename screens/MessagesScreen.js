@@ -13,7 +13,7 @@ export default class MessagesScreen extends React.Component {
 
   async componentWillMount() {
     console.log('Loading messages ...')
-    const bandwidth = await SecureStore.getItemAsync('bandwidth');
+    const bandwidth = JSON.parse((await SecureStore.getItemAsync('bandwidth')) || '{}');
     const baseUrl = await AsyncStorage.getItem('baseUrl');
     const phoneNumber = await AsyncStorage.getItem('phoneNumber');
     const messages = await postJSON(`${baseUrl}/loadMessages`, Object.assign(bandwidth, {phoneNumber}));
@@ -37,7 +37,7 @@ export default class MessagesScreen extends React.Component {
   }
 
   async onSend(messages = []) {
-    const bandwidth = await SecureStore.getItemAsync('bandwidth');
+    const bandwidth = JSON.parse((await SecureStore.getItemAsync('bandwidth')) || '{}');
     const baseUrl = await AsyncStorage.getItem('baseUrl');
     const message = postJSON(`${baseUrl}/sendMessage`, Object.assign(bandwidth, messages[0]));
     this.setState((previousState) => ({

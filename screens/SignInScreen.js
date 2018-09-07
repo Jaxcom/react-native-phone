@@ -2,6 +2,7 @@ import React from 'react';
 import {SecureStore} from 'expo';
 import t from 'tcomb-form-native';
 import {postJSON} from '../lib/fetch';
+import {navigate}  from '../lib/navigation';
 
 import {
     Button,
@@ -97,8 +98,8 @@ export default class SignInScreen extends React.Component {
             await AsyncStorage.setItem('phoneNumber', phoneNumber);
             await AsyncStorage.setItem('baseUrl', baseUrl);
             await getSipData();
-            await registerForPushNotifications();
-            this.props.navigation.navigate('App');
+            setTimeout(() => registerForPushNotifications().catch(console.error), 10);
+            navigate('App');
         } catch(err) {
             this.setState({error: err.message, inProgress: false});
         } 
