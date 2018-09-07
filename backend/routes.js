@@ -155,7 +155,7 @@ router.post('/sendMessage', async ctx => {
 });
 
 router.post('/registerForPush', async ctx => {
-    ctx.body = '';
+    ctx.body = {};
     const {token, userId} = ctx.request.body;
     const userData = JSON.parse((await redis.get(userId)) || '{}');
     debug('Saving push notification token %s for user %s', token, userId);
