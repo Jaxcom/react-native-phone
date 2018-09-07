@@ -6,6 +6,10 @@ import {postJSON} from '../lib/fetch';
 import {addIncomingMessagesHandler, removeIncomingMessagesHandler} from '../lib/notification';
 
 export default class MessagesScreen extends React.Component {
+  static navigationOptions = {
+    title: 'Messages',
+  };
+
   state = {
     phoneNumber: '',
     messages: []

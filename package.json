@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@expo/samples": "2.1.1",
+    "base-64": "^0.1.0",
     "expo": "29.0.0",
     "expo-analytics-segment": "^1.0.0-rc.0",
     "expo-barcode-scanner": "^1.0.0-rc.0",

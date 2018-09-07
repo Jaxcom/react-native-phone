@@ -1,5 +1,6 @@
 import React from 'react';
-import { SectionList, Image, StyleSheet, Text, View, AsyncStorage } from 'react-native';
+import {encode} from 'base-64';
+import { SectionList, StyleSheet, Text, View, AsyncStorage } from 'react-native';
 import { Constants, SecureStore } from 'expo';
 
 export default class SettingsScreen extends React.Component {
@@ -10,7 +11,8 @@ export default class SettingsScreen extends React.Component {
   state = {
     userId: '',
     sipUri: '',
-    phoneNumber: ''
+    phoneNumber: '',
+    balance: '-'
   }
 
   componentWillMount() {
@@ -18,18 +20,35 @@ export default class SettingsScreen extends React.Component {
     Promise.all([
       SecureStore.getItemAsync('sip'),
       SecureStore.getItemAsync('bandwidth'),
-      AsyncStorage.getItem('phoneNumber')
+      AsyncStorage.getItem('phoneNumber'),
     ])
       .then(r => {
         const sip = JSON.parse(r[0] || '{}')
         const auth = JSON.parse(r[1] || '{}')
         this.setState({sipUri: sip.sipUri, userId: auth.userId, phoneNumber: r[2]})
+        this.getBalance(auth).then(balance => {
+          this.setState({balance});
+        });
       })
+  }
+
+  async getBalance({userId, apiToken, apiSecret}) {
+    const r = await fetch(`https://api.catapult.inetwork.com/v1/users/${userId}/account`, {
+      headers: {
+        'Authorization': `Basic ${encode(`${apiToken}:${apiSecret}`)}`
+      }
+    });
+    const {balance} = await r.json();
+    if (balance) {
+      return `${balance}$`;
+    }
+    return '';
   }
 
   render() {
     const { manifest } = Constants;
     const sections = [
+      { data: [{ value: this.state.balance }], title: 'Balance' },
       { data: [{ value: this.state.userId }], title: 'User ID' },
       { data: [{ value: this.state.phoneNumber }], title: 'Phone Number' },
       { data: [{ value: this.state.sipUri }], title: 'SIP URI' },

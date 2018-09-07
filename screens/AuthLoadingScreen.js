@@ -14,7 +14,7 @@ export default class AuthLoadingScreen extends React.Component {
   }
 
   _bootstrapAsync = async () => {
-    const bandwidth = null; // await SecureStore.getItemAsync('bandwidth');
+    const bandwidth = await SecureStore.getItemAsync('bandwidth');
     this.props.navigation.navigate(bandwidth ? 'App' : 'Auth');
   };
 
