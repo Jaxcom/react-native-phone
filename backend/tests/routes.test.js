@@ -190,7 +190,8 @@ test.serial('POST /loadMessages should return all messages for given number', as
                 userId: 'userId',
                 apiToken: 'apiToken',
                 apiSecret: 'apiSecret',
-                phoneNumber: '+11234567890'
+                phoneNumber: '+11234567890',
+                contactNumber: '+11234567891'
             }
         }
     };
@@ -200,7 +201,7 @@ test.serial('POST /loadMessages should return all messages for given number', as
         }
     };
     router.getBandwidthApi = () => mockApi;
-    td.when(mockApi.Message.list({size: 1000, to: '+11234567890'})).thenResolve({
+    td.when(mockApi.Message.list({size: 1000, to: '+11234567890', from: '+11234567891'})).thenResolve({
         messages: [{time: '2018-09-05T08:20:00'}],
         hasNextPage: true,
         getNextPage: () => Promise.resolve({
@@ -208,7 +209,7 @@ test.serial('POST /loadMessages should return all messages for given number', as
             hasNextPage: false
         })
     });
-    td.when(mockApi.Message.list({size: 1000, from: '+11234567890'})).thenResolve({
+    td.when(mockApi.Message.list({size: 1000, from: '+11234567890', to: '+11234567891'})).thenResolve({
         messages: [{time: '2018-09-05T09:00:00'}],
         hasNextPage: false
     });

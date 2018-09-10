@@ -43,6 +43,8 @@ export default class MessagesScreen extends React.Component {
     try {
       const messages = await postJSON(`${baseUrl}/loadMessages`, Object.assign(bandwidth, {phoneNumber, contactNumber: navigation.getParam('to', '')}));
       this.setState({messages: messages.map(this._prepareMessage), phoneNumber});
+    } catch (err) {
+      alert(err.message);
     } finally {
       this.setState({isLoading: false});
     }
