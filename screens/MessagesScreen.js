@@ -60,9 +60,10 @@ export default class MessagesScreen extends React.Component {
   }
 
   async onSend(messages = []) {
+    const {navigation} = this.props;
     const bandwidth = JSON.parse((await SecureStore.getItemAsync('bandwidth')) || '{}');
     const baseUrl = await AsyncStorage.getItem('baseUrl');
-    const message = postJSON(`${baseUrl}/sendMessage`, Object.assign(bandwidth, messages[0]));
+    const message = postJSON(`${baseUrl}/sendMessage`, Object.assign(bandwidth, {to:  navigation.getParam('to', ''), from: this.state.phoneNumber, text: messages[0].text}));
     this.setState((previousState) => ({
       messages: GiftedChat.append(previousState.messages, [this._prepareMessage(message)]),
     }));
