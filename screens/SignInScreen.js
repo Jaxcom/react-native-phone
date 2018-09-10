@@ -98,9 +98,10 @@ export default class SignInScreen extends React.Component {
             await AsyncStorage.setItem('phoneNumber', phoneNumber);
             await AsyncStorage.setItem('baseUrl', baseUrl);
             await getSipData();
-            setTimeout(() => registerForPushNotifications().catch(console.error), 10);
+            setTimeout(() => registerForPushNotifications().catch(console.error), 1000);
             navigate('App');
         } catch(err) {
+            console.trace(err);
             this.setState({error: err.message, inProgress: false});
         } 
     };
