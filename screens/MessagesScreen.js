@@ -9,9 +9,28 @@ import {addIncomingMessagesHandler, removeIncomingMessagesHandler} from '../lib/
 export default class MessagesScreen extends React.Component {
   static navigationOptions = ({navigation}) => ({
     title: 'Messages',
-    headerRight: (<Button title={navigation.getParam('to', '') || 'Enter Contact'} onPress={() => {
+    headerRight: (<View>
+      <Button title={navigation.getParam('to', '') || 'Enter Contact'} onPress={() => {
       navigation.setParams({visiblePrompt: true});
-    }}></Button>)
+    }}></Button>
+    <Prompt
+          title="Phone number for messaging"
+          inputPlaceholder="Enter phone number"
+          isVisible={navigation.getParam('visiblePrompt', false)}
+          defaultValue="+1"
+          onBackButtonPress={() => {}}
+          onChangeText={newTo => {
+            navigation.setParams({newTo});
+          }}
+          onCancel={() => {
+            navigation.setParams({visiblePrompt: false, to: ''});
+          }}
+          onSubmit={() => {
+            navigation.setParams({visiblePrompt: false});
+            navigation.navigate('Messages', {to: navigation.getParam('newTo', '')})
+          }}
+        />
+    </View>)
   });
 
   state = {
@@ -23,14 +42,30 @@ export default class MessagesScreen extends React.Component {
   async componentWillMount() {
     this.onIncomingMessage = this.onIncomingMessage.bind(this);
     addIncomingMessagesHandler(this.onIncomingMessage);
+    console.log(this.props.navigation);
+    await this._loadMessages();
   }
 
   componentWillUnmount() {
     removeIncomingMessagesHandler(this.onIncomingMessage);
   }
 
+  componentDidUpdate(prevProps) {
+    if (prevProps.navigation.getParam('to') !== this.props.navigation.getParam('to')) {
+      this._loadMessages();
+    }
+  }
+
+
   _prepareMessage(message){
-    return message;
+    return {
+      _id: message.id,
+      user: {
+        _id: message.from
+      },
+      text: message.text,
+      createdAt: new Date(message.time)
+    };
   }
 
   async _loadMessages(){
@@ -72,35 +107,14 @@ export default class MessagesScreen extends React.Component {
   }
   
   render() {
-    const {navigation} = this.props;
     return (
-      <View>
-        <Prompt
-          title="Phone number for messaging"
-          inputPlaceholder="Enter phone number"
-          isVisible={navigation.getParam('visiblePrompt', false)}
-          defaultValue="+1"
-          onBackButtonPress={() => {}}
-          onChangeText={to => {
-            navigation.setParams({to});
-          }}
-          onCancel={() => {
-            navigation.setParams({visiblePrompt: false, to: ''});
-          }}
-          onSubmit={() => {
-            navigation.setParams({visiblePrompt: false});
-            this._loadMessages();
-          }}
-        />
-        <GiftedChat 
-          messages={this.state.messages}
-          onSend={messages => this.onSend(messages)}
-          isLoadingEarlier={this.state.isLoading}
-          user={{
-            from: this.state.phoneNumber,
-          }}>
-        </GiftedChat>
-      </View>
-    );
+      <GiftedChat 
+        messages={this.state.messages}
+        onSend={messages => this.onSend(messages)}
+        isLoadingEarlier={this.state.isLoading}
+        user={{
+          from: this.state.phoneNumber,
+        }}>
+      </GiftedChat>);
   }
 }
