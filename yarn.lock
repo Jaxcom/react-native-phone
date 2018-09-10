@@ -3707,6 +3707,10 @@ react-native-platform-touchable@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/react-native-platform-touchable/-/react-native-platform-touchable-1.1.1.tgz#fde4acc65eea585d28b164d0c3716a42129a68e4"
 
+react-native-prompt-crossplatform@^1.6.1:
+  version "1.6.1"
+  resolved "https://registry.yarnpkg.com/react-native-prompt-crossplatform/-/react-native-prompt-crossplatform-1.6.1.tgz#0186c7de473fcbc00a50b6b1f599fb2193d880a7"
+
 react-native-reanimated@1.0.0-alpha.3:
   version "1.0.0-alpha.3"
   resolved "https://registry.yarnpkg.com/react-native-reanimated/-/react-native-reanimated-1.0.0-alpha.3.tgz#42983aa41911791cd3186fd3a18a788c3d4c3601"

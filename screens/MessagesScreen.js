@@ -1,27 +1,26 @@
 import React from 'react';
-import {AsyncStorage} from 'react-native';
+import {AsyncStorage, Button, View} from 'react-native';
 import {GiftedChat} from 'react-native-gifted-chat';
 import {SecureStore} from 'expo';
+import Prompt from 'react-native-prompt-crossplatform';
 import {postJSON} from '../lib/fetch';
 import {addIncomingMessagesHandler, removeIncomingMessagesHandler} from '../lib/notification';
 
 export default class MessagesScreen extends React.Component {
-  static navigationOptions = {
+  static navigationOptions = ({navigation}) => ({
     title: 'Messages',
-  };
+    headerRight: (<Button title={navigation.getParam('to', '') || 'Enter Contact'} onPress={() => {
+      navigation.setParams({visiblePrompt: true});
+    }}></Button>)
+  });
 
   state = {
-    phoneNumber: '',
-    messages: []
+    phoneNumber: '111',
+    messages: [],
+    isLoading: false
   }
 
   async componentWillMount() {
-    console.log('Loading messages ...')
-    const bandwidth = JSON.parse((await SecureStore.getItemAsync('bandwidth')) || '{}');
-    const baseUrl = await AsyncStorage.getItem('baseUrl');
-    const phoneNumber = await AsyncStorage.getItem('phoneNumber');
-    const messages = await postJSON(`${baseUrl}/loadMessages`, Object.assign(bandwidth, {phoneNumber}));
-    this.setState({messages: messages.map(this._prepareMessage)});
     this.onIncomingMessage = this.onIncomingMessage.bind(this);
     addIncomingMessagesHandler(this.onIncomingMessage);
   }
@@ -32,6 +31,21 @@ export default class MessagesScreen extends React.Component {
 
   _prepareMessage(message){
     return message;
+  }
+
+  async _loadMessages(){
+    const {navigation} = this.props;
+    this.setState({isLoading: true});
+    console.log('Loading messages ...')
+    const bandwidth = JSON.parse((await SecureStore.getItemAsync('bandwidth')) || '{}');
+    const baseUrl = await AsyncStorage.getItem('baseUrl');
+    const phoneNumber = await AsyncStorage.getItem('phoneNumber');
+    try {
+      const messages = await postJSON(`${baseUrl}/loadMessages`, Object.assign(bandwidth, {phoneNumber, contactNumber: navigation.getParam('to', '')}));
+      this.setState({messages: messages.map(this._prepareMessage), phoneNumber});
+    } finally {
+      this.setState({isLoading: false});
+    }
   }
 
   onIncomingMessage(message){
@@ -50,14 +64,35 @@ export default class MessagesScreen extends React.Component {
   }
   
   render() {
+    const {navigation} = this.props;
     return (
-      <GiftedChat 
-        messages={this.state.messages}
-        onSend={messages => this.onSend(messages)}
-        user={{
-          from: this.state.phoneNumber,
-        }}>
-      </GiftedChat>
+      <View>
+        <Prompt
+          title="Phone number for messaging"
+          inputPlaceholder="Enter phone number"
+          isVisible={navigation.getParam('visiblePrompt', false)}
+          defaultValue="+1"
+          onBackButtonPress={() => {}}
+          onChangeText={to => {
+            navigation.setParams({to});
+          }}
+          onCancel={() => {
+            navigation.setParams({visiblePrompt: false, to: ''});
+          }}
+          onSubmit={() => {
+            navigation.setParams({visiblePrompt: false});
+            this._loadMessages();
+          }}
+        />
+        <GiftedChat 
+          messages={this.state.messages}
+          onSend={messages => this.onSend(messages)}
+          isLoadingEarlier={this.state.isLoading}
+          user={{
+            from: this.state.phoneNumber,
+          }}>
+        </GiftedChat>
+      </View>
     );
   }
 }

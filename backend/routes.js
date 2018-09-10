@@ -133,10 +133,10 @@ router.post('/loadMessages', async ctx => {
         return messages;    
     };
     
-    const {phoneNumber} = ctx.request.body;
+    const {phoneNumber, contactNumber} = ctx.request.body;
     const api = router.getBandwidthApi(ctx.request.body);
-    const messagesTo = await getAllMessages(api.Message.list({size: 1000, to: phoneNumber}));
-    const messagesFrom = await getAllMessages(api.Message.list({size: 1000, from: phoneNumber}));
+    const messagesTo = await getAllMessages(api.Message.list({size: 1000, to: phoneNumber, from: contactNumber}));
+    const messagesFrom = await getAllMessages(api.Message.list({size: 1000, from: phoneNumber, to: contactNumber}));
     const messages = [].concat(messagesTo, messagesFrom);
     messages.sort((m1, m2) => m1.time.localeCompare(m2.time));
     ctx.body = messages;
