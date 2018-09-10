@@ -49,6 +49,11 @@ export default class MessagesScreen extends React.Component {
   }
 
   onIncomingMessage(message){
+    const to = this.params.navigation.getParam('to', '');
+    const {phoneNumber} = this.state;
+    if (!(((message.to === to) && (message.from === phoneNumber)) || ((message.to === phoneNumber) && (message.to === phoneNumber)))) {
+      return;
+    }
     this.setState((previousState) => ({
       messages: GiftedChat.append(previousState.messages, [this._prepareMessage(message)]),
     }));
