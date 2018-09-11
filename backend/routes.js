@@ -2,7 +2,7 @@ const Router = require('koa-router');
 const randomstring = require('randomstring');
 const {application, phoneNumber, endpoint} = require('@bandwidth/node-bandwidth-extra');
 const Redis = require('ioredis');
-const Expo = require('expo-server-sdk');
+const {Expo} = require('expo-server-sdk');
 const debug = require('debug')('routes');
 
 const router = new Router();
@@ -107,8 +107,9 @@ router.post('/:userId/callback', async ctx => {
             await redis.publish(userData.phoneNumber, JSON.stringify(message));
             
             // send push notification
-            /*const expo = new Expo();
+            const expo = new Expo();
             if (!Expo.isExpoPushToken(userData.token)) {
+                debug('Invalid push token %s', userData.token);
                 return;
             }
             const chunk = expo.chunkPushNotifications([{
@@ -117,7 +118,7 @@ router.post('/:userId/callback', async ctx => {
                 body: message.text,
                 data: JSON.stringify(message),
             }])[0];
-            await expo.sendPushNotificationsAsync(chunk);*/
+            await expo.sendPushNotificationsAsync(chunk).catch(console.trace);
         }
     }
 });
@@ -150,8 +151,15 @@ router.post('/loadMessages', async ctx => {
     {
         id: 'id2',
         text: 'Hello2',
-        from: contactNumber,
-        to: phoneNumber,
+        to: contactNumber,
+        from: phoneNumber,
+        time: new Date().toISOString()
+    },
+    {
+        id: 'id4',
+        text: 'Hello4',
+        to: contactNumber,
+        from: phoneNumber,
         time: new Date().toISOString()
     },
     {
