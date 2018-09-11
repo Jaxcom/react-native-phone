@@ -104,10 +104,14 @@ export default class MessagesScreen extends React.Component {
     const bandwidth = JSON.parse((await SecureStore.getItemAsync('bandwidth')) || '{}');
     const phoneNumber = await AsyncStorage.getItem('phoneNumber');
     const baseUrl = await AsyncStorage.getItem('baseUrl');
-    const message = await postJSON(`${baseUrl}/sendMessage`, Object.assign(bandwidth, {to, from: phoneNumber, text: messages[0].text}));
-    this.setState((previousState) => ({
-      messages: GiftedChat.append(previousState.messages, [this._prepareMessage(message)]),
-    }));
+    try {
+      const message = await postJSON(`${baseUrl}/sendMessage`, Object.assign(bandwidth, {to, from: phoneNumber, text: messages[0].text}));
+      this.setState((previousState) => ({
+        messages: GiftedChat.append(previousState.messages, [this._prepareMessage(message)]),
+      }));
+    } catch (err) {
+      alert(err.message);
+    }
   }
   
   render() {

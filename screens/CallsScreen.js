@@ -46,11 +46,15 @@ class CallsScreen extends React.Component {
   }
 
   async makeCall() {
-    const {phoneNumber} = this.state;
-    console.log(`Calling to ${phoneNumber}`);
-    const data = await getSipData();
-    data.activeCall = await data.endpoint.makeCall(data.accounts[0], phoneNumber, {videoCount: 0, audioCount: 1}); // audio only call
-    this.props.navigation.navigate('ActiveCall', {phoneNumber});
+    try {
+      const {phoneNumber} = this.state;
+      console.log(`Calling to ${phoneNumber}`);
+      const data = await getSipData();
+      data.activeCall = await data.endpoint.makeCall(data.accounts[0], phoneNumber, {videoCount: 0, audioCount: 1}); // audio only call
+      this.props.navigation.navigate('ActiveCall', {phoneNumber});
+    } catch (err) {
+      alert(err.message);
+    }
   }
 
   render() {

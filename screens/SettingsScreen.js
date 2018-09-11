@@ -28,7 +28,7 @@ export default class SettingsScreen extends React.Component {
         this.setState({sipUri: sip.sipUri, userId: auth.userId, phoneNumber: r[2]})
         this.getBalance(auth).then(balance => {
           this.setState({balance});
-        });
+        }, console.error);
       })
   }
 

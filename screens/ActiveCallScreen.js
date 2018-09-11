@@ -39,7 +39,7 @@ class ActiveCallScreen extends React.Component {
                 }
             };
             endpoint.addListener("call_changed", this.callChanged);
-        });
+        }).catch(console.error);
     }
     
     async pressButton (digit) {
