@@ -103,6 +103,7 @@ export default class SignInScreen extends React.Component {
         } catch(err) {
             console.trace(err);
             this.setState({error: err.message, inProgress: false});
+            alert(err.message);
         } 
     };
 

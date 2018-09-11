@@ -53,7 +53,8 @@
     "android": {
       "package": "com.bandwidth.ReactNativePhone",
       "publishBundlePath": "android/app/src/main/assets/shell-app.bundle",
-      "publishManifestPath": "android/app/src/main/assets/shell-app-manifest.json"
+      "publishManifestPath": "android/app/src/main/assets/shell-app-manifest.json",
+      "googleServicesFile": "google-services.json"
     }
   }
 }
