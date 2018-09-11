@@ -141,34 +141,6 @@ router.post('/loadMessages', async ctx => {
     const messages = [].concat(messagesTo, messagesFrom);
     messages.sort((m1, m2) => m1.time.localeCompare(m2.time));
     ctx.body = messages;
-    ctx.body = [{
-        id: 'id1',
-        text: 'Hello',
-        from: contactNumber,
-        to: phoneNumber,
-        time: new Date().toISOString()
-    },
-    {
-        id: 'id2',
-        text: 'Hello2',
-        to: contactNumber,
-        from: phoneNumber,
-        time: new Date().toISOString()
-    },
-    {
-        id: 'id4',
-        text: 'Hello4',
-        to: contactNumber,
-        from: phoneNumber,
-        time: new Date().toISOString()
-    },
-    {
-        id: 'id3',
-        text: 'Hello3',
-        from: contactNumber,
-        to: phoneNumber,
-        time: new Date().toISOString()
-    }];
 });
 
 router.post('/sendMessage', async ctx => {

@@ -34,7 +34,7 @@ export default class MessagesScreen extends React.Component {
   });
 
   state = {
-    phoneNumber: '111',
+    phoneNumber: '',
     messages: [],
     isLoading: false
   }
@@ -97,10 +97,14 @@ export default class MessagesScreen extends React.Component {
 
   async onSend(messages = []) {
     const {navigation} = this.props;
+    const to = navigation.getParam('to', '');
+    if (!to) {
+      return;
+    }
     const bandwidth = JSON.parse((await SecureStore.getItemAsync('bandwidth')) || '{}');
     const phoneNumber = await AsyncStorage.getItem('phoneNumber');
     const baseUrl = await AsyncStorage.getItem('baseUrl');
-    const message = await postJSON(`${baseUrl}/sendMessage`, Object.assign(bandwidth, {to:  navigation.getParam('to', ''), from: phoneNumber, text: messages[0].text}));
+    const message = await postJSON(`${baseUrl}/sendMessage`, Object.assign(bandwidth, {to, from: phoneNumber, text: messages[0].text}));
     this.setState((previousState) => ({
       messages: GiftedChat.append(previousState.messages, [this._prepareMessage(message)]),
     }));
@@ -113,7 +117,7 @@ export default class MessagesScreen extends React.Component {
         onSend={messages => this.onSend(messages)}
         isLoadingEarlier={this.state.isLoading}
         user={{
-          from: this.state.phoneNumber,
+          _id: this.state.phoneNumber,
         }}>
       </GiftedChat>);
   }
