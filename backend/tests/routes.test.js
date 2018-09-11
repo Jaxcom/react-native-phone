@@ -226,7 +226,7 @@ test.serial('POST /sendMessage should send a message', async t => {
                 userId: 'userId',
                 apiToken: 'apiToken',
                 apiSecret: 'apiSecret',
-                phoneNumber: '+11234567890',
+                from: '+11234567890',
                 to: '+11234567891',
                 text: 'Hello'
             }
