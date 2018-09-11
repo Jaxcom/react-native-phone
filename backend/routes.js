@@ -72,7 +72,7 @@ router.post('/login', async ctx => {
 });
 
 router.post('/:userId/callback', async ctx => {
-    const {eventType, from, to, callId, messageId} = ctx.request.body;
+    const {eventType, from, to, callId, messageId, text} = ctx.request.body;
     ctx.body = ' ';
     const userData = JSON.parse((await redis.get(ctx.params.userId)) || '{}');
     if (!userData.apiToken || !userData.apiSecret) {
@@ -100,14 +100,14 @@ router.post('/:userId/callback', async ctx => {
     }
     if (eventType === 'sms') {
         if (to === userData.phoneNumber) {
-            debug('Incoming message %s -> %s', from, userData.phoneNumber);
+            debug('Incoming message %s -> %s', from, userData.phoneNumber, text);
             
             const message = await api.Message.get(messageId);
             // send notification to active clients
             await redis.publish(userData.phoneNumber, JSON.stringify(message));
             
             // send push notification
-            const expo = new Expo();
+            /*const expo = new Expo();
             if (!Expo.isExpoPushToken(userData.token)) {
                 return;
             }
@@ -117,7 +117,7 @@ router.post('/:userId/callback', async ctx => {
                 body: message.text,
                 data: JSON.stringify(message),
             }])[0];
-            await expo.sendPushNotificationsAsync(chunk);
+            await expo.sendPushNotificationsAsync(chunk);*/
         }
     }
 });
@@ -140,13 +140,34 @@ router.post('/loadMessages', async ctx => {
     const messages = [].concat(messagesTo, messagesFrom);
     messages.sort((m1, m2) => m1.time.localeCompare(m2.time));
     ctx.body = messages;
+    ctx.body = [{
+        id: 'id1',
+        text: 'Hello',
+        from: contactNumber,
+        to: phoneNumber,
+        time: new Date().toISOString()
+    },
+    {
+        id: 'id2',
+        text: 'Hello2',
+        from: contactNumber,
+        to: phoneNumber,
+        time: new Date().toISOString()
+    },
+    {
+        id: 'id3',
+        text: 'Hello3',
+        from: contactNumber,
+        to: phoneNumber,
+        time: new Date().toISOString()
+    }];
 });
 
 router.post('/sendMessage', async ctx => {
-    const {to, text, phoneNumber} = ctx.request.body;
+    const {to, text, from} = ctx.request.body;
     const api = router.getBandwidthApi(ctx.request.body);
     const id = (await api.Message.send({
-        from: phoneNumber,
+        from,
         to,
         text
     })).id;

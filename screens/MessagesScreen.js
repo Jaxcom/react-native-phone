@@ -42,7 +42,6 @@ export default class MessagesScreen extends React.Component {
   async componentWillMount() {
     this.onIncomingMessage = this.onIncomingMessage.bind(this);
     addIncomingMessagesHandler(this.onIncomingMessage);
-    console.log(this.props.navigation);
     await this._loadMessages();
   }
 
@@ -86,7 +85,7 @@ export default class MessagesScreen extends React.Component {
   }
 
   onIncomingMessage(message){
-    const to = this.params.navigation.getParam('to', '');
+    const to = this.props.navigation.getParam('to', '');
     const {phoneNumber} = this.state;
     if (!(((message.to === to) && (message.from === phoneNumber)) || ((message.to === phoneNumber) && (message.to === phoneNumber)))) {
       return;
@@ -99,8 +98,9 @@ export default class MessagesScreen extends React.Component {
   async onSend(messages = []) {
     const {navigation} = this.props;
     const bandwidth = JSON.parse((await SecureStore.getItemAsync('bandwidth')) || '{}');
+    const phoneNumber = await AsyncStorage.getItem('phoneNumber');
     const baseUrl = await AsyncStorage.getItem('baseUrl');
-    const message = postJSON(`${baseUrl}/sendMessage`, Object.assign(bandwidth, {to:  navigation.getParam('to', ''), from: this.state.phoneNumber, text: messages[0].text}));
+    const message = await postJSON(`${baseUrl}/sendMessage`, Object.assign(bandwidth, {to:  navigation.getParam('to', ''), from: phoneNumber, text: messages[0].text}));
     this.setState((previousState) => ({
       messages: GiftedChat.append(previousState.messages, [this._prepareMessage(message)]),
     }));
