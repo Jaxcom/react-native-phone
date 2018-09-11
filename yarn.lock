@@ -436,12 +436,6 @@
     hoist-non-react-statics "^2.2.2"
     prop-types "^15.5.10"
 
-"@expo/samples@2.1.1":
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/@expo/samples/-/samples-2.1.1.tgz#563ccd71f6c7fd9eb9389f4aa91d37c65040dbff"
-  dependencies:
-    react-native-platform-touchable "^1.1.1"
-
 "@expo/vector-icons@^6.3.1":
   version "6.3.1"
   resolved "http://registry.npmjs.org/@expo/vector-icons/-/vector-icons-6.3.1.tgz#ffb97cc2343e4a330b44ce3063ee7c8571a6a50d"
@@ -3703,10 +3697,6 @@ react-native-pjsip@^2.7.4:
   dependencies:
     events "1.1.0"
 
-react-native-platform-touchable@^1.1.1:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/react-native-platform-touchable/-/react-native-platform-touchable-1.1.1.tgz#fde4acc65eea585d28b164d0c3716a42129a68e4"
-
 react-native-prompt-crossplatform@^1.6.1:
   version "1.6.1"
   resolved "https://registry.yarnpkg.com/react-native-prompt-crossplatform/-/react-native-prompt-crossplatform-1.6.1.tgz#0186c7de473fcbc00a50b6b1f599fb2193d880a7"
@@ -4398,7 +4388,7 @@ tar@^4:
     safe-buffer "^5.1.2"
     yallist "^3.0.2"
 
-tcomb-form-native@^0.6.15:
+tcomb-form-native@^0.6.16:
   version "0.6.16"
   resolved "https://registry.yarnpkg.com/tcomb-form-native/-/tcomb-form-native-0.6.16.tgz#291c284ff8ad0feee4b746bcc1a1094e0f39e2c1"
   dependencies:
