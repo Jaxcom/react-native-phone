@@ -36,7 +36,7 @@ Remember URL of started web app. It will be required later.
 
 ## Configure Push notifications (Android only)
 
-You should configure Firebase Cloud Messaging to enable push notifications on Android devices. Read [here](https://docs.expo.io/versions/latest/guides/using-fcm) for more details. Save generated file `google-services.json` in project directory.
+You should configure Firebase Cloud Messaging to enable push notifications on Android devices. Read [here](https://docs.expo.io/versions/latest/guides/using-fcm) for more details. Save generated file `google-services.json` in project directory (overwrite exisiting file).
 
 
 ## Building a mobile app
