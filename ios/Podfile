@@ -18,22 +18,14 @@ target 'react-native-phone' do
     :path => "../node_modules/expo-core/ios"
   pod 'EXFont',
     :path => "../node_modules/expo-font/ios"
-  pod 'EXPrint',
-    :path => "../node_modules/expo-print/ios"
-  pod 'EXCamera',
-    :path => "../node_modules/expo-camera/ios"
   pod 'EXSensors',
     :path => "../node_modules/expo-sensors/ios"
-  pod 'EXLocation',
-    :path => "../node_modules/expo-location/ios"
   pod 'EXConstants',
     :path => "../node_modules/expo-constants/ios"
   pod 'EXFileSystem',
     :path => "../node_modules/expo-file-system/ios"
   pod 'EXPermissions',
     :path => "../node_modules/expo-permissions/ios"
-  pod 'EXSegment',
-    :path => "../node_modules/expo-analytics-segment/ios"
   pod 'EXMediaLibrary',
     :path => "../node_modules/expo-media-library/ios"
   pod 'EXFontInterface',
@@ -52,12 +44,6 @@ target 'react-native-phone' do
     :path => "../node_modules/expo-permissions-interface/ios"
   pod 'EXImageLoaderInterface',
     :path => "../node_modules/expo-image-loader-interface/ios"
-  pod 'EXFaceDetectorInterface',
-    :path => "../node_modules/expo-face-detector-interface/ios"
-  pod 'EXBarCodeScannerInterface',
-    :path => "../node_modules/expo-barcode-scanner-interface/ios"
-  pod 'EXBarCodeScanner',
-    :path => "../node_modules/expo-barcode-scanner/ios"
   pod 'EXGL-CPP',
     :path => "../node_modules/expo-gl-cpp/cpp"
 
