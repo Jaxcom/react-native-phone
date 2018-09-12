@@ -6,7 +6,7 @@ Simple phone application based on react-native
 ## Prerequisites
 - [NodeJS 10+](https://nodejs.org/en/)
 - [Git](https://git-scm.com/)
-- Android and/or IOS developer tools
+- Android and/or IOS developer tools with [CocoaPods](https://cocoapods.org/).
 
 If you are going to use Windows 10 use WSL (linux subsystem) to run build tools to avoid possible issues. Install Ubuntu or another linux from Store and run as admin in PowerShell terminal `Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux`. 
 
@@ -40,15 +40,19 @@ You should configure Firebase Cloud Messaging to enable push notifications on An
 
 ## Building a mobile app
 
-```sh
-exp login # to login on expo.io
+Run `exp start` first.
 
-exp build:android # to build Android app
-exp build:ios # to build IOS app
 
-```
+### Android
 
-Read [here](https://docs.expo.io/versions/v29.0.0/distribution/building-standalone-apps) for more details.
+Open in Android Studio project in `android` and build it.
+
+### IOS
+
+Go to directory `ios` and install dependencies by `pod install`.
+Open in XCode `react-native-phone.xcworkspace` and build it.
+
+Read [here](https://docs.expo.io/versions/v29.0.0/distribution/building-standalone-apps) and [here](https://docs.expo.io/versions/v29.0.0/expokit/expokit) for more details.
 
 ## Running
 
