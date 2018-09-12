@@ -49,9 +49,6 @@ PODS:
   - EXGL-CPP/UEXGL (1.0.1)
   - EXImageLoaderInterface (1.0.0):
     - EXCore
-  - EXMediaLibrary (1.0.0):
-    - EXCore
-    - EXPermissionsInterface
   - EXPermissions (1.0.1):
     - EXCore
     - EXPermissionsInterface
@@ -211,7 +208,6 @@ DEPENDENCIES:
   - EXGL (from `../node_modules/expo-gl/ios`)
   - EXGL-CPP (from `../node_modules/expo-gl-cpp/cpp`)
   - EXImageLoaderInterface (from `../node_modules/expo-image-loader-interface/ios`)
-  - EXMediaLibrary (from `../node_modules/expo-media-library/ios`)
   - EXPermissions (from `../node_modules/expo-permissions/ios`)
   - EXPermissionsInterface (from `../node_modules/expo-permissions-interface/ios`)
   - ExpoKit/Core (from `http://github.com/expo/expo.git`, tag `ios/2.7.8`)
@@ -289,8 +285,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/expo-gl-cpp/cpp"
   EXImageLoaderInterface:
     :path: "../node_modules/expo-image-loader-interface/ios"
-  EXMediaLibrary:
-    :path: "../node_modules/expo-media-library/ios"
   EXPermissions:
     :path: "../node_modules/expo-permissions/ios"
   EXPermissionsInterface:
@@ -341,7 +335,6 @@ SPEC CHECKSUMS:
   EXGL: ce6f87dc239b56a0c7c8e0bcb18c96c64a6db27f
   EXGL-CPP: a7fd8224fdc8a2503ba5531ceca1b02c4432f2b2
   EXImageLoaderInterface: e6aa5b14ab3376c4771b18b798aaa6b696d66001
-  EXMediaLibrary: 1410f21ff08dbc3ee783003b27fcf72ad20bb9c2
   EXPermissions: 1c524493270ba64f494f805b6e0e75d4b498ecb5
   EXPermissionsInterface: 814a15d3259873c39646ed3cfe58bb49160445c1
   ExpoKit: c3e2766c73ed3ef87bd388defe8592838261ad4e
@@ -371,6 +364,6 @@ SPEC CHECKSUMS:
   React: aa2040dbb6f317b95314968021bd2888816e03d5
   yoga: a23273df0088bf7f2bb7e5d7b00044ea57a2a54a
 
-PODFILE CHECKSUM: 3c0a8ec412bae86f3c28009250493d997d2df323
+PODFILE CHECKSUM: 297ad6fd0b8113e7385cee8f4febc582a3c2afff
 
 COCOAPODS: 1.5.3

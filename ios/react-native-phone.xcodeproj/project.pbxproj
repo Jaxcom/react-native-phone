@@ -7,7 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5F1B4780903C4A0C99B7FC05 /* libRTCPjSip.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD7E8C28446A452F933FC377 /* libRTCPjSip.a */; };
+		556AB47121493CC000C55E62 /* PjSipPreviewVideoViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 556AB45B21493CBE00C55E62 /* PjSipPreviewVideoViewManager.m */; };
+		556AB47221493CC000C55E62 /* PjSipUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 556AB45F21493CBF00C55E62 /* PjSipUtil.m */; };
+		556AB47321493CC000C55E62 /* PjSipVideoViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 556AB46021493CBF00C55E62 /* PjSipVideoViewManager.m */; };
+		556AB47421493CC000C55E62 /* PjSipAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 556AB46221493CBF00C55E62 /* PjSipAccount.m */; };
+		556AB47521493CC000C55E62 /* PjSipVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = 556AB46421493CBF00C55E62 /* PjSipVideo.m */; };
+		556AB47621493CC000C55E62 /* PjSipRemoteVideoViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 556AB46621493CBF00C55E62 /* PjSipRemoteVideoViewManager.m */; };
+		556AB47721493CC000C55E62 /* PjSipMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 556AB46921493CBF00C55E62 /* PjSipMessage.m */; };
+		556AB47821493CC000C55E62 /* PjSipEndpoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 556AB46A21493CBF00C55E62 /* PjSipEndpoint.m */; };
+		556AB47921493CC000C55E62 /* PjSipCall.m in Sources */ = {isa = PBXBuildFile; fileRef = 556AB46B21493CBF00C55E62 /* PjSipCall.m */; };
+		556AB47A21493CC000C55E62 /* PjSipLocalVideoViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 556AB46C21493CBF00C55E62 /* PjSipLocalVideoViewManager.m */; };
+		556AB47B21493CC000C55E62 /* PjSipModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 556AB46D21493CC000C55E62 /* PjSipModule.m */; };
+		556AB47D21493D0100C55E62 /* VialerPJSIP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 556AB47C21493D0100C55E62 /* VialerPJSIP.framework */; };
 		B501732B1DC01252003445D9 /* EXShell.plist in Resources */ = {isa = PBXBuildFile; fileRef = B501732A1DC01252003445D9 /* EXShell.plist */; };
 		B56386491DB9693800A0598C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B56386481DB9693800A0598C /* AppDelegate.m */; };
 		B56386511DB9693800A0598C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B56386501DB9693800A0598C /* Assets.xcassets */; };
@@ -19,23 +30,35 @@
 		B5CFBF4F1EDE419400B4BE24 /* EXBuildConstants.plist in Resources */ = {isa = PBXBuildFile; fileRef = B5CFBF4E1EDE419400B4BE24 /* EXBuildConstants.plist */; };
 		B5DB04801F3A684600E91581 /* shell-app-manifest.json in Resources */ = {isa = PBXBuildFile; fileRef = B5DB047E1F3A684600E91581 /* shell-app-manifest.json */; };
 		B5DB04811F3A684600E91581 /* shell-app.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B5DB047F1F3A684600E91581 /* shell-app.bundle */; };
-		EBB8117C1BFA0514F79CAF74 /* libPods-react-native-phone.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C4A88D15726AD99E8A257BC7 /* libPods-react-native-phone.a */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		550D8B1B213A8895000D39B5 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B1E0F4ABC7DF4DFA8EDCF64B /* RTCPjSip.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = DDFF87521D79D6F50096A8BE;
-			remoteInfo = RTCPjSip;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
+		2509C77E084DC9CE30D292B4 /* libPods-react-native-phone.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-react-native-phone.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C1548D9E4CB1AEFA5CCAE6D /* Pods-react-native-phone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-react-native-phone.debug.xcconfig"; path = "Pods/Target Support Files/Pods-react-native-phone/Pods-react-native-phone.debug.xcconfig"; sourceTree = "<group>"; };
+		556AB45B21493CBE00C55E62 /* PjSipPreviewVideoViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PjSipPreviewVideoViewManager.m; path = "../../node_modules/react-native-pjsip/ios/RTCPjSip/PjSipPreviewVideoViewManager.m"; sourceTree = "<group>"; };
+		556AB45C21493CBE00C55E62 /* PjSipCall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PjSipCall.h; path = "../../node_modules/react-native-pjsip/ios/RTCPjSip/PjSipCall.h"; sourceTree = "<group>"; };
+		556AB45D21493CBE00C55E62 /* PjSipPreviewVideoViewManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PjSipPreviewVideoViewManager.h; path = "../../node_modules/react-native-pjsip/ios/RTCPjSip/PjSipPreviewVideoViewManager.h"; sourceTree = "<group>"; };
+		556AB45E21493CBE00C55E62 /* PjSipUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PjSipUtil.h; path = "../../node_modules/react-native-pjsip/ios/RTCPjSip/PjSipUtil.h"; sourceTree = "<group>"; };
+		556AB45F21493CBF00C55E62 /* PjSipUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PjSipUtil.m; path = "../../node_modules/react-native-pjsip/ios/RTCPjSip/PjSipUtil.m"; sourceTree = "<group>"; };
+		556AB46021493CBF00C55E62 /* PjSipVideoViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PjSipVideoViewManager.m; path = "../../node_modules/react-native-pjsip/ios/RTCPjSip/PjSipVideoViewManager.m"; sourceTree = "<group>"; };
+		556AB46121493CBF00C55E62 /* PjSipEndpoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PjSipEndpoint.h; path = "../../node_modules/react-native-pjsip/ios/RTCPjSip/PjSipEndpoint.h"; sourceTree = "<group>"; };
+		556AB46221493CBF00C55E62 /* PjSipAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PjSipAccount.m; path = "../../node_modules/react-native-pjsip/ios/RTCPjSip/PjSipAccount.m"; sourceTree = "<group>"; };
+		556AB46321493CBF00C55E62 /* PjSipRemoteVideoViewManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PjSipRemoteVideoViewManager.h; path = "../../node_modules/react-native-pjsip/ios/RTCPjSip/PjSipRemoteVideoViewManager.h"; sourceTree = "<group>"; };
+		556AB46421493CBF00C55E62 /* PjSipVideo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PjSipVideo.m; path = "../../node_modules/react-native-pjsip/ios/RTCPjSip/PjSipVideo.m"; sourceTree = "<group>"; };
+		556AB46521493CBF00C55E62 /* PjSipVideoViewManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PjSipVideoViewManager.h; path = "../../node_modules/react-native-pjsip/ios/RTCPjSip/PjSipVideoViewManager.h"; sourceTree = "<group>"; };
+		556AB46621493CBF00C55E62 /* PjSipRemoteVideoViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PjSipRemoteVideoViewManager.m; path = "../../node_modules/react-native-pjsip/ios/RTCPjSip/PjSipRemoteVideoViewManager.m"; sourceTree = "<group>"; };
+		556AB46721493CBF00C55E62 /* PjSipVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PjSipVideo.h; path = "../../node_modules/react-native-pjsip/ios/RTCPjSip/PjSipVideo.h"; sourceTree = "<group>"; };
+		556AB46821493CBF00C55E62 /* PjSipLocalVideoViewManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PjSipLocalVideoViewManager.h; path = "../../node_modules/react-native-pjsip/ios/RTCPjSip/PjSipLocalVideoViewManager.h"; sourceTree = "<group>"; };
+		556AB46921493CBF00C55E62 /* PjSipMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PjSipMessage.m; path = "../../node_modules/react-native-pjsip/ios/RTCPjSip/PjSipMessage.m"; sourceTree = "<group>"; };
+		556AB46A21493CBF00C55E62 /* PjSipEndpoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PjSipEndpoint.m; path = "../../node_modules/react-native-pjsip/ios/RTCPjSip/PjSipEndpoint.m"; sourceTree = "<group>"; };
+		556AB46B21493CBF00C55E62 /* PjSipCall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PjSipCall.m; path = "../../node_modules/react-native-pjsip/ios/RTCPjSip/PjSipCall.m"; sourceTree = "<group>"; };
+		556AB46C21493CBF00C55E62 /* PjSipLocalVideoViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PjSipLocalVideoViewManager.m; path = "../../node_modules/react-native-pjsip/ios/RTCPjSip/PjSipLocalVideoViewManager.m"; sourceTree = "<group>"; };
+		556AB46D21493CC000C55E62 /* PjSipModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PjSipModule.m; path = "../../node_modules/react-native-pjsip/ios/RTCPjSip/PjSipModule.m"; sourceTree = "<group>"; };
+		556AB46E21493CC000C55E62 /* PjSipMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PjSipMessage.h; path = "../../node_modules/react-native-pjsip/ios/RTCPjSip/PjSipMessage.h"; sourceTree = "<group>"; };
+		556AB46F21493CC000C55E62 /* PjSipAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PjSipAccount.h; path = "../../node_modules/react-native-pjsip/ios/RTCPjSip/PjSipAccount.h"; sourceTree = "<group>"; };
+		556AB47021493CC000C55E62 /* PjSipModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PjSipModule.h; path = "../../node_modules/react-native-pjsip/ios/RTCPjSip/PjSipModule.h"; sourceTree = "<group>"; };
+		556AB47C21493D0100C55E62 /* VialerPJSIP.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VialerPJSIP.framework; path = "../node_modules/react-native-pjsip/ios/VialerPJSIP.framework"; sourceTree = "<group>"; };
 		A47FE4D7F70906B7DC8CE39B /* Pods-react-native-phone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-react-native-phone.release.xcconfig"; path = "Pods/Target Support Files/Pods-react-native-phone/Pods-react-native-phone.release.xcconfig"; sourceTree = "<group>"; };
-		B1E0F4ABC7DF4DFA8EDCF64B /* RTCPjSip.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RTCPjSip.xcodeproj; path = "../node_modules/react-native-pjsip/ios/RTCPjSip.xcodeproj"; sourceTree = "<group>"; };
 		B501732A1DC01252003445D9 /* EXShell.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = EXShell.plist; sourceTree = "<group>"; };
 		B56386411DB9693800A0598C /* react-native-phone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "react-native-phone.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B56386471DB9693800A0598C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -50,7 +73,6 @@
 		B5CFBF4E1EDE419400B4BE24 /* EXBuildConstants.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = EXBuildConstants.plist; sourceTree = "<group>"; };
 		B5DB047E1F3A684600E91581 /* shell-app-manifest.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "shell-app-manifest.json"; sourceTree = "<group>"; };
 		B5DB047F1F3A684600E91581 /* shell-app.bundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "shell-app.bundle"; sourceTree = "<group>"; };
-		C4A88D15726AD99E8A257BC7 /* libPods-react-native-phone.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-react-native-phone.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD7E8C28446A452F933FC377 /* libRTCPjSip.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRTCPjSip.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -59,8 +81,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EBB8117C1BFA0514F79CAF74 /* libPods-react-native-phone.a in Frameworks */,
-				5F1B4780903C4A0C99B7FC05 /* libRTCPjSip.a in Frameworks */,
+				556AB47D21493D0100C55E62 /* VialerPJSIP.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,7 +91,8 @@
 		1A42804E64B7E9E0AB8B6799 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				C4A88D15726AD99E8A257BC7 /* libPods-react-native-phone.a */,
+				556AB47C21493D0100C55E62 /* VialerPJSIP.framework */,
+				2509C77E084DC9CE30D292B4 /* libPods-react-native-phone.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -81,14 +103,6 @@
 				DD7E8C28446A452F933FC377 /* libRTCPjSip.a */,
 			);
 			name = "Recovered References";
-			sourceTree = "<group>";
-		};
-		550D8B18213A8895000D39B5 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				550D8B1C213A8895000D39B5 /* libRTCPjSip.a */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		5B29BC350A332C58878A9F13 /* Pods */ = {
@@ -123,6 +137,28 @@
 		B56386431DB9693800A0598C /* react-native-phone */ = {
 			isa = PBXGroup;
 			children = (
+				556AB46F21493CC000C55E62 /* PjSipAccount.h */,
+				556AB46221493CBF00C55E62 /* PjSipAccount.m */,
+				556AB45C21493CBE00C55E62 /* PjSipCall.h */,
+				556AB46B21493CBF00C55E62 /* PjSipCall.m */,
+				556AB46121493CBF00C55E62 /* PjSipEndpoint.h */,
+				556AB46A21493CBF00C55E62 /* PjSipEndpoint.m */,
+				556AB46821493CBF00C55E62 /* PjSipLocalVideoViewManager.h */,
+				556AB46C21493CBF00C55E62 /* PjSipLocalVideoViewManager.m */,
+				556AB46E21493CC000C55E62 /* PjSipMessage.h */,
+				556AB46921493CBF00C55E62 /* PjSipMessage.m */,
+				556AB47021493CC000C55E62 /* PjSipModule.h */,
+				556AB46D21493CC000C55E62 /* PjSipModule.m */,
+				556AB45D21493CBE00C55E62 /* PjSipPreviewVideoViewManager.h */,
+				556AB45B21493CBE00C55E62 /* PjSipPreviewVideoViewManager.m */,
+				556AB46321493CBF00C55E62 /* PjSipRemoteVideoViewManager.h */,
+				556AB46621493CBF00C55E62 /* PjSipRemoteVideoViewManager.m */,
+				556AB45E21493CBE00C55E62 /* PjSipUtil.h */,
+				556AB45F21493CBF00C55E62 /* PjSipUtil.m */,
+				556AB46721493CBF00C55E62 /* PjSipVideo.h */,
+				556AB46421493CBF00C55E62 /* PjSipVideo.m */,
+				556AB46521493CBF00C55E62 /* PjSipVideoViewManager.h */,
+				556AB46021493CBF00C55E62 /* PjSipVideoViewManager.m */,
 				B56386471DB9693800A0598C /* AppDelegate.h */,
 				B56386481DB9693800A0598C /* AppDelegate.m */,
 				B56386501DB9693800A0598C /* Assets.xcassets */,
@@ -151,7 +187,6 @@
 		BB65C2C6C7F14730A9B4F54C /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				B1E0F4ABC7DF4DFA8EDCF64B /* RTCPjSip.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -207,28 +242,12 @@
 			mainGroup = B56386381DB9693800A0598C;
 			productRefGroup = B56386421DB9693800A0598C /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 550D8B18213A8895000D39B5 /* Products */;
-					ProjectRef = B1E0F4ABC7DF4DFA8EDCF64B /* RTCPjSip.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				B56386401DB9693800A0598C /* react-native-phone */,
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		550D8B1C213A8895000D39B5 /* libRTCPjSip.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libRTCPjSip.a;
-			remoteRef = 550D8B1B213A8895000D39B5 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		B563863F1DB9693800A0598C /* Resources */ = {
@@ -345,8 +364,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				556AB47521493CC000C55E62 /* PjSipVideo.m in Sources */,
+				556AB47A21493CC000C55E62 /* PjSipLocalVideoViewManager.m in Sources */,
+				556AB47721493CC000C55E62 /* PjSipMessage.m in Sources */,
+				556AB47121493CC000C55E62 /* PjSipPreviewVideoViewManager.m in Sources */,
+				556AB47321493CC000C55E62 /* PjSipVideoViewManager.m in Sources */,
+				556AB47421493CC000C55E62 /* PjSipAccount.m in Sources */,
+				556AB47B21493CC000C55E62 /* PjSipModule.m in Sources */,
 				B56386611DB96A5E00A0598C /* main.m in Sources */,
+				556AB47221493CC000C55E62 /* PjSipUtil.m in Sources */,
 				B56386491DB9693800A0598C /* AppDelegate.m in Sources */,
+				556AB47921493CC000C55E62 /* PjSipCall.m in Sources */,
+				556AB47621493CC000C55E62 /* PjSipRemoteVideoViewManager.m in Sources */,
+				556AB47821493CC000C55E62 /* PjSipEndpoint.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -461,6 +491,67 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = C8D8QTF339;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Crashlytics/iOS\"",
+					"\"${PODS_ROOT}/FBAudienceNetwork\"",
+					"\"${PODS_ROOT}/Fabric/iOS\"",
+					"\"${PODS_ROOT}/Google-Mobile-Ads-SDK/Frameworks/frameworks\"",
+					"\"${PODS_ROOT}/GoogleAppUtilities/Frameworks/frameworks\"",
+					"\"${PODS_ROOT}/GoogleAuthUtilities/Frameworks/frameworks\"",
+					"\"${PODS_ROOT}/GoogleMaps/Base/Frameworks\"",
+					"\"${PODS_ROOT}/GoogleMaps/Maps/Frameworks\"",
+					"\"${PODS_ROOT}/GoogleNetworkingUtilities/Frameworks/frameworks\"",
+					"\"${PODS_ROOT}/GoogleSymbolUtilities/Frameworks/frameworks\"",
+					"\"${PODS_ROOT}/GoogleUtilities/Frameworks/frameworks\"",
+					"${SOURCE_ROOT}/../node_modules/react-native-pjsip/ios",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/Amplitude-iOS\"",
+					"\"${PODS_ROOT}/Headers/Public/Analytics\"",
+					"\"${PODS_ROOT}/Headers/Public/AppAuth\"",
+					"\"${PODS_ROOT}/Headers/Public/Bolts\"",
+					"\"${PODS_ROOT}/Headers/Public/Branch\"",
+					"\"${PODS_ROOT}/Headers/Public/CocoaLumberjack\"",
+					"\"${PODS_ROOT}/Headers/Public/Crashlytics\"",
+					"\"${PODS_ROOT}/Headers/Public/DoubleConversion\"",
+					"\"${PODS_ROOT}/Headers/Public/EXCameraInterface\"",
+					"\"${PODS_ROOT}/Headers/Public/EXConstants\"",
+					"\"${PODS_ROOT}/Headers/Public/EXConstantsInterface\"",
+					"\"${PODS_ROOT}/Headers/Public/EXCore\"",
+					"\"${PODS_ROOT}/Headers/Public/EXFileSystem\"",
+					"\"${PODS_ROOT}/Headers/Public/EXFileSystemInterface\"",
+					"\"${PODS_ROOT}/Headers/Public/EXFont\"",
+					"\"${PODS_ROOT}/Headers/Public/EXFontInterface\"",
+					"\"${PODS_ROOT}/Headers/Public/EXGL\"",
+					"\"${PODS_ROOT}/Headers/Public/EXGL-CPP\"",
+					"\"${PODS_ROOT}/Headers/Public/EXImageLoaderInterface\"",
+					"\"${PODS_ROOT}/Headers/Public/EXPermissions\"",
+					"\"${PODS_ROOT}/Headers/Public/EXPermissionsInterface\"",
+					"\"${PODS_ROOT}/Headers/Public/EXReactNativeAdapter\"",
+					"\"${PODS_ROOT}/Headers/Public/EXSMS\"",
+					"\"${PODS_ROOT}/Headers/Public/EXSensors\"",
+					"\"${PODS_ROOT}/Headers/Public/EXSensorsInterface\"",
+					"\"${PODS_ROOT}/Headers/Public/ExpoKit\"",
+					"\"${PODS_ROOT}/Headers/Public/FBAudienceNetwork\"",
+					"\"${PODS_ROOT}/Headers/Public/FBSDKCoreKit\"",
+					"\"${PODS_ROOT}/Headers/Public/FBSDKLoginKit\"",
+					"\"${PODS_ROOT}/Headers/Public/FBSDKShareKit\"",
+					"\"${PODS_ROOT}/Headers/Public/Fabric\"",
+					"\"${PODS_ROOT}/Headers/Public/GPUImage\"",
+					"\"${PODS_ROOT}/Headers/Public/Google-Maps-iOS-Utils\"",
+					"\"${PODS_ROOT}/Headers/Public/Google-Mobile-Ads-SDK\"",
+					"\"${PODS_ROOT}/Headers/Public/GoogleMaps\"",
+					"\"${PODS_ROOT}/Headers/Public/GoogleSignIn\"",
+					"\"${PODS_ROOT}/Headers/Public/JKBigInteger2\"",
+					"\"${PODS_ROOT}/Headers/Public/React\"",
+					"\"${PODS_ROOT}/Headers/Public/glog\"",
+					"\"${PODS_ROOT}/Headers/Public/lottie-ios\"",
+					"\"${PODS_ROOT}/Headers/Public/yoga\"",
+					"${SOURCE_ROOT}/../node_modules/react-native-pjsip/ios",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/react-native-phone/Supporting/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
@@ -479,6 +570,67 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = C8D8QTF339;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Crashlytics/iOS\"",
+					"\"${PODS_ROOT}/FBAudienceNetwork\"",
+					"\"${PODS_ROOT}/Fabric/iOS\"",
+					"\"${PODS_ROOT}/Google-Mobile-Ads-SDK/Frameworks/frameworks\"",
+					"\"${PODS_ROOT}/GoogleAppUtilities/Frameworks/frameworks\"",
+					"\"${PODS_ROOT}/GoogleAuthUtilities/Frameworks/frameworks\"",
+					"\"${PODS_ROOT}/GoogleMaps/Base/Frameworks\"",
+					"\"${PODS_ROOT}/GoogleMaps/Maps/Frameworks\"",
+					"\"${PODS_ROOT}/GoogleNetworkingUtilities/Frameworks/frameworks\"",
+					"\"${PODS_ROOT}/GoogleSymbolUtilities/Frameworks/frameworks\"",
+					"\"${PODS_ROOT}/GoogleUtilities/Frameworks/frameworks\"",
+					"${SOURCE_ROOT}/../node_modules/react-native-pjsip/ios",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/Amplitude-iOS\"",
+					"\"${PODS_ROOT}/Headers/Public/Analytics\"",
+					"\"${PODS_ROOT}/Headers/Public/AppAuth\"",
+					"\"${PODS_ROOT}/Headers/Public/Bolts\"",
+					"\"${PODS_ROOT}/Headers/Public/Branch\"",
+					"\"${PODS_ROOT}/Headers/Public/CocoaLumberjack\"",
+					"\"${PODS_ROOT}/Headers/Public/Crashlytics\"",
+					"\"${PODS_ROOT}/Headers/Public/DoubleConversion\"",
+					"\"${PODS_ROOT}/Headers/Public/EXCameraInterface\"",
+					"\"${PODS_ROOT}/Headers/Public/EXConstants\"",
+					"\"${PODS_ROOT}/Headers/Public/EXConstantsInterface\"",
+					"\"${PODS_ROOT}/Headers/Public/EXCore\"",
+					"\"${PODS_ROOT}/Headers/Public/EXFileSystem\"",
+					"\"${PODS_ROOT}/Headers/Public/EXFileSystemInterface\"",
+					"\"${PODS_ROOT}/Headers/Public/EXFont\"",
+					"\"${PODS_ROOT}/Headers/Public/EXFontInterface\"",
+					"\"${PODS_ROOT}/Headers/Public/EXGL\"",
+					"\"${PODS_ROOT}/Headers/Public/EXGL-CPP\"",
+					"\"${PODS_ROOT}/Headers/Public/EXImageLoaderInterface\"",
+					"\"${PODS_ROOT}/Headers/Public/EXPermissions\"",
+					"\"${PODS_ROOT}/Headers/Public/EXPermissionsInterface\"",
+					"\"${PODS_ROOT}/Headers/Public/EXReactNativeAdapter\"",
+					"\"${PODS_ROOT}/Headers/Public/EXSMS\"",
+					"\"${PODS_ROOT}/Headers/Public/EXSensors\"",
+					"\"${PODS_ROOT}/Headers/Public/EXSensorsInterface\"",
+					"\"${PODS_ROOT}/Headers/Public/ExpoKit\"",
+					"\"${PODS_ROOT}/Headers/Public/FBAudienceNetwork\"",
+					"\"${PODS_ROOT}/Headers/Public/FBSDKCoreKit\"",
+					"\"${PODS_ROOT}/Headers/Public/FBSDKLoginKit\"",
+					"\"${PODS_ROOT}/Headers/Public/FBSDKShareKit\"",
+					"\"${PODS_ROOT}/Headers/Public/Fabric\"",
+					"\"${PODS_ROOT}/Headers/Public/GPUImage\"",
+					"\"${PODS_ROOT}/Headers/Public/Google-Maps-iOS-Utils\"",
+					"\"${PODS_ROOT}/Headers/Public/Google-Mobile-Ads-SDK\"",
+					"\"${PODS_ROOT}/Headers/Public/GoogleMaps\"",
+					"\"${PODS_ROOT}/Headers/Public/GoogleSignIn\"",
+					"\"${PODS_ROOT}/Headers/Public/JKBigInteger2\"",
+					"\"${PODS_ROOT}/Headers/Public/React\"",
+					"\"${PODS_ROOT}/Headers/Public/glog\"",
+					"\"${PODS_ROOT}/Headers/Public/lottie-ios\"",
+					"\"${PODS_ROOT}/Headers/Public/yoga\"",
+					"${SOURCE_ROOT}/../node_modules/react-native-pjsip/ios",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/react-native-phone/Supporting/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
