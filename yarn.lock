@@ -3734,9 +3734,9 @@ react-native-parsed-text@^0.0.20:
     babel-plugin-check-es2015-constants "6.22.0"
     prop-types "^15.5.10"
 
-react-native-pjsip@^2.7.4:
+"react-native-pjsip@https://github.com/datso/react-native-pjsip.git":
   version "2.7.4"
-  resolved "https://registry.yarnpkg.com/react-native-pjsip/-/react-native-pjsip-2.7.4.tgz#f60664a274285458f127935ada8c0d6fc2f24e18"
+  resolved "https://github.com/datso/react-native-pjsip.git#9c9ebd95f2b2c887af1a18495852dc6e70706a99"
   dependencies:
     events "1.1.0"
 

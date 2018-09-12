@@ -13,8 +13,7 @@ If you are going to use Windows 10 use WSL (linux subsystem) to run build tools 
 ## Install dependencies
  - Install react-native cli tools `npm install -g expo-cli exp react-native-cli`
  - Install dependencies by `npm install` or `yarn`
- - Run `react-native link` to link plugins with projects
-
+ 
 
 ## Prepare backend web application
 
