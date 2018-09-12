@@ -1858,12 +1858,6 @@ expo-camera-interface@^1.0.1:
   dependencies:
     expo-core "^1.0.1"
 
-expo-camera-interface@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/expo-camera-interface/-/expo-camera-interface-1.0.2.tgz#228f035ddb2960d4a62f1875f13ffe92fb65110c"
-  dependencies:
-    expo-core "~1.1.0"
-
 expo-camera@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/expo-camera/-/expo-camera-1.0.1.tgz#c72133d4613f9e5c379250e8b31346ee2ad83900"
@@ -1893,10 +1887,6 @@ expo-core@^1.0.0, expo-core@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/expo-core/-/expo-core-1.0.1.tgz#f71c43c1d477e79b259507ff708f487603eed5df"
 
-expo-core@~1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/expo-core/-/expo-core-1.1.0.tgz#c6c81282cc33b7de3913e5c3e46462b8e8f733ec"
-
 expo-face-detector-interface@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/expo-face-detector-interface/-/expo-face-detector-interface-1.0.1.tgz#095922f409d040c209c73442e95eab51cb895f82"
@@ -1925,20 +1915,6 @@ expo-file-system@^1.0.0:
     expo-file-system-interface "^1.0.1"
     uuid-js "^0.7.5"
 
-expo-font-interface@~1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/expo-font-interface/-/expo-font-interface-1.0.0.tgz#8e6d4b305499b30405ae425458a976359cdc0c10"
-  dependencies:
-    expo-core "~1.1.0"
-
-expo-font@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/expo-font/-/expo-font-1.0.0.tgz#853a78820a857c1979d26a6414589b1bfe275a31"
-  dependencies:
-    expo-core "~1.1.0"
-    expo-font-interface "~1.0.0"
-    invariant "^2.2.2"
-
 expo-gl-cpp@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/expo-gl-cpp/-/expo-gl-cpp-1.0.1.tgz#8c24ea59864c9e87cfb828fa1c0dc88222879082"
@@ -1954,30 +1930,11 @@ expo-gl@^1.0.0:
     expo-file-system-interface "^1.0.1"
     expo-gl-cpp "^1.0.1"
 
-expo-image-loader-interface@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/expo-image-loader-interface/-/expo-image-loader-interface-1.0.0.tgz#77249526b81acc85116bfc36200d1accefb3f6d2"
-  dependencies:
-    expo-core "~1.1.0"
-
-expo-media-library@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/expo-media-library/-/expo-media-library-1.0.0.tgz#af2b0c5b624e28541856e524ec876a014cd055c7"
-  dependencies:
-    expo-core "~1.1.0"
-    expo-permissions-interface "~1.1.0"
-
 expo-permissions-interface@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/expo-permissions-interface/-/expo-permissions-interface-1.0.1.tgz#33c0d94dab3866cf533e56eb76cb3a53e2c5058c"
   dependencies:
     expo-core "^1.0.1"
-
-expo-permissions-interface@~1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/expo-permissions-interface/-/expo-permissions-interface-1.1.0.tgz#82aa821466d421a7fa261dfc70e74320832f6307"
-  dependencies:
-    expo-core "~1.1.0"
 
 expo-permissions@^1.0.0:
   version "1.0.1"
