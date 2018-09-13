@@ -57,3 +57,11 @@ Read [here](https://docs.expo.io/versions/v29.0.0/distribution/building-standalo
 ## Running
 
 Install mobile app on the phone. Run it. Enter your Bandwidth auth data and url to backend web app in login page and press `Log in`. After that you can make call, send messages. Switch to tab "Settings" to see asiggned phone number and sip uri.
+
+### Screenshots
+
+![Calls](images/calls.jpg)
+
+![Messages](images/messages.jpg)
+
+![Settings](images/settings.jpg)
